@@ -1,9 +1,10 @@
 import React from 'react';
+import SubscriptionPricing from './SubcribtionPricenig/SubscriptionPricing';
 
 const Home = () => {
     return (
         <div className='max-w-[1350px] mx-auto'>
-            <h1>Home</h1>
+            <SubscriptionPricing/>
         </div>
     );
 };
