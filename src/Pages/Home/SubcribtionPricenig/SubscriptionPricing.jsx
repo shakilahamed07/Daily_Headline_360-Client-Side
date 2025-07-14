@@ -47,7 +47,7 @@ export default function SubscriptionPricing() {
                 </li>
               ))}
             </ul>
-            <Link to='' className=" btn w-full py-2 bg-primary text-white font-semibold rounded hover:bg-primary/80 transition mt-3">
+            <Link onClick={() => window.scrollTo({ top: 120, behavior: "smooth" })} to='/subscription' className=" btn w-full py-2 bg-primary text-white font-semibold rounded hover:bg-primary/80 transition mt-3 ">
               Subscribe
             </Link>
           </div>

@@ -7,6 +7,8 @@ import Home from '../Pages/Home/Home';
 import Login from '../Pages/Register/Login';
 import Register from '../Pages/Register/Register';
 import ErrorElement from '../Pages/ErrorElement';
+import Subscription from '../Pages/Home/Subscription/subscription';
+import PriveteRoute from './PriveteRoute';
 
   export const router = createBrowserRouter([
     {
@@ -26,7 +28,11 @@ import ErrorElement from '../Pages/ErrorElement';
         {
           path: '/register',
           Component: Register
-        }
+        },
+        {
+          path: '/subscription',
+          element: <PriveteRoute><Subscription/></PriveteRoute>
+        },
       ]
     },
   ]);
