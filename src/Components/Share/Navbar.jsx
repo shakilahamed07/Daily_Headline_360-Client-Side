@@ -65,6 +65,12 @@ const Navbar = () => {
             </NavLink>
           </li>
 
+          <li>
+            <NavLink to="/dashboard" className={`font-medium md:text-white`}>
+              Dashboard
+            </NavLink>
+          </li>
+
         </>
       )}
     </>
