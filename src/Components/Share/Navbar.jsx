@@ -3,11 +3,13 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import Logo from "../../assets/Logo.png";
 import useAuth from "../../Hooks/useAuth";
+// import useUserRole from "../../Hooks/useUserRole";
 // import { MdDarkMode } from "react-icons/md";
 const Navbar = () => {
   const { logOutUser, user } = useAuth();
   const navigate = useNavigate();
-  console.log(user)
+  // const {role, roleLoading} = useUserRole()
+  // console.log(role, roleLoading)
 
   const hendleLogout = () => {
     logOutUser()
