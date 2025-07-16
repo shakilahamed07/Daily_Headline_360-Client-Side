@@ -15,7 +15,6 @@ const SocialLogin = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then( async (result) => {
-        console.log(result.user.email)
         toast.success("Login successful");
         
         //update database

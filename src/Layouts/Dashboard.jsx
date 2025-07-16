@@ -30,7 +30,7 @@ const DashBoard = () => {
           to="/dashboard"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 bg-primary text-white"
+              ? "flex items-center  gap-2 bg-primary text-white"
               : "flex items-center gap-2"
           }
         >

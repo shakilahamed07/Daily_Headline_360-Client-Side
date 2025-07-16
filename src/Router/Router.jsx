@@ -12,6 +12,8 @@ import PriveteRoute from './PriveteRoute';
 import DashBoard from '../Layouts/Dashboard';
 import AddPublisher from '../Pages/Dashboard/AddPublisher/AddPublisher';
 import AdminRoutes from '../PrivateRoutes/AdminRoutes';
+import AddArticle from '../Pages/AddArticle/AddArticle';
+import AllArticles from '../Pages/Dashboard/AllArticles/AllArticles';
 
   export const router = createBrowserRouter([
     {
@@ -36,11 +38,15 @@ import AdminRoutes from '../PrivateRoutes/AdminRoutes';
           path: '/subscription',
           element: <PriveteRoute><Subscription/></PriveteRoute>
         },
+        {
+          path: '/add-articles',
+          element: <PriveteRoute><AddArticle/></PriveteRoute>
+        },
       ]
     },
     {
       path:'/dashboard',
-      element: <PriveteRoute><DashBoard/></PriveteRoute>,
+      element: <PriveteRoute><AdminRoutes><DashBoard/></AdminRoutes></PriveteRoute>,
       children:[
         {
           index: true,
@@ -49,7 +55,11 @@ import AdminRoutes from '../PrivateRoutes/AdminRoutes';
         {
           path:'add-publisher',
           element: <AdminRoutes><AddPublisher/></AdminRoutes>
-        }
+        },
+        {
+          path:'all-articles',
+          element: <AdminRoutes><AllArticles/></AdminRoutes>
+        },
       ]
     }
   ]);
