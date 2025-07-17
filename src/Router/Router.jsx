@@ -14,6 +14,7 @@ import AddPublisher from '../Pages/Dashboard/AddPublisher/AddPublisher';
 import AdminRoutes from '../PrivateRoutes/AdminRoutes';
 import AddArticle from '../Pages/AddArticle/AddArticle';
 import AllArticles from '../Pages/Dashboard/AllArticles/AllArticles';
+import All_Article_Page from '../Pages/All_Article_page/All_Article_Page';
 
   export const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ import AllArticles from '../Pages/Dashboard/AllArticles/AllArticles';
         {
           path: '/add-articles',
           element: <PriveteRoute><AddArticle/></PriveteRoute>
+        },
+        {
+          path: '/all-articles-page',
+          element: <PriveteRoute><All_Article_Page/></PriveteRoute>
         },
       ]
     },

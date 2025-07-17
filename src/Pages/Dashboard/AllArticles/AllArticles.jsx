@@ -131,7 +131,7 @@ const AllArticles = () => {
                     {article.status}
                   </span>
                 </td>
-                <td>{article.publisher?.label || "N/A"}</td>
+                <td>{article.publisher}</td>
                 <td>
                   {article.isPremium ? (
                     <span className="badge badge-info">Yes</span>

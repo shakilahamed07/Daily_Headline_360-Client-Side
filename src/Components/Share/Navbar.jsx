@@ -37,7 +37,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <NavLink to="/all-articles" className={`font-medium md:text-white`}>
+            <NavLink to="/all-articles-page" className={`font-medium md:text-white`}>
               All Articles
             </NavLink>
           </li>

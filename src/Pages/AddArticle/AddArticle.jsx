@@ -67,7 +67,7 @@ const AddArticle = () => {
         creator_img: user.photoURL,
         description,
         image: imgUrl,
-        publisher,
+        publisher: publisher.label,
         title,
         tags,
         views:0,
