@@ -59,6 +59,7 @@ const AddArticle = () => {
       const tags = JSON.parse(formData.get("tags"));
 
       const {description, publisher, title} = data;
+      console.log(publisher.value)
       
 
       const articleData = {
@@ -68,6 +69,7 @@ const AddArticle = () => {
         description,
         image: imgUrl,
         publisher: publisher.label,
+        publisher_logo: publisher.value,
         title,
         tags,
         views:0,
@@ -135,7 +137,7 @@ const AddArticle = () => {
               <Select
                 {...field}
                 options={publishers.map((p) => ({
-                  value: p._id,
+                  value: p.logo,
                   label: p.name,
                 }))}
                 isLoading={isLoading}

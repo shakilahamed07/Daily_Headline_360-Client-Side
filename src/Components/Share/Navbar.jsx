@@ -3,13 +3,23 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import Logo from "../../assets/Logo.png";
 import useAuth from "../../Hooks/useAuth";
-// import useUserRole from "../../Hooks/useUserRole";
-// import { MdDarkMode } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
 const Navbar = () => {
-  const { logOutUser, user } = useAuth();
+  const { logOutUser, user, loading } = useAuth();
   const navigate = useNavigate();
-  // const {role, roleLoading} = useUserRole()
-  // console.log(role, roleLoading)
+
+  const { data: userRole = {}, isLoading } = useQuery({
+    queryKey: ["users2"],
+    enabled: !loading && !!user,
+    queryFn: async () => {
+      const res = await axios.get(
+        `http://localhost:5000/users/role/${user.email}`
+      );
+      return res.data;
+    },
+  });
 
   const hendleLogout = () => {
     logOutUser()
@@ -29,7 +39,6 @@ const Navbar = () => {
       </li>
       {user && (
         <>
-
           <li>
             <NavLink to="/add-articles" className={`font-medium md:text-white`}>
               Add Articles
@@ -37,7 +46,10 @@ const Navbar = () => {
           </li>
 
           <li>
-            <NavLink to="/all-articles-page" className={`font-medium md:text-white`}>
+            <NavLink
+              to="/all-articles-page"
+              className={`font-medium md:text-white`}
+            >
               All Articles
             </NavLink>
           </li>
@@ -52,12 +64,16 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-        {/* //*premium user access only */}
-          <li>
-            <NavLink to="/premium-articles" className={`font-medium md:text-white`}>
-              Premium Articles*
-            </NavLink>
-          </li>
+          {!isLoading && userRole.premiumToken && (
+            <li>
+              <NavLink
+                to="/premium-articles"
+                className={`font-medium md:text-white`}
+              >
+                Premium Articles*
+              </NavLink>
+            </li>
+          )}
 
           <li>
             <NavLink to="/my-articles" className={`font-medium md:text-white`}>
@@ -65,12 +81,13 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li>
-            <NavLink to="/dashboard" className={`font-medium md:text-white`}>
-              Dashboard
-            </NavLink>
-          </li>
-
+          {!isLoading && userRole.role === "admin" && (
+            <li>
+              <NavLink to="/dashboard" className={`font-medium md:text-white`}>
+                Dashboard
+              </NavLink>
+            </li>
+          )}
         </>
       )}
     </>

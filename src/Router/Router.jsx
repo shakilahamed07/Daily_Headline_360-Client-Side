@@ -15,6 +15,9 @@ import AdminRoutes from '../PrivateRoutes/AdminRoutes';
 import AddArticle from '../Pages/AddArticle/AddArticle';
 import AllArticles from '../Pages/Dashboard/AllArticles/AllArticles';
 import All_Article_Page from '../Pages/All_Article_page/All_Article_Page';
+import ArticleDetails from '../Pages/ArticleDetails/ArticleDetails';
+import PremiumArticles from '../Pages/PremiumArticles/PremiumArticles';
+import SubscriptionRoute from '../PrivateRoutes/SubscriptionRoute';
 
   export const router = createBrowserRouter([
     {
@@ -46,6 +49,14 @@ import All_Article_Page from '../Pages/All_Article_page/All_Article_Page';
         {
           path: '/all-articles-page',
           element: <PriveteRoute><All_Article_Page/></PriveteRoute>
+        },
+        {
+          path: '/article/:id',
+          element: <PriveteRoute><ArticleDetails/></PriveteRoute>
+        },
+        {
+          path: '/premium-articles',
+          element: <PriveteRoute><SubscriptionRoute><PremiumArticles/></SubscriptionRoute></PriveteRoute>
         },
       ]
     },

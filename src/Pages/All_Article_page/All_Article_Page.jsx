@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useNavigate } from "react-router";
 import useAuth from "../../Hooks/useAuth";
+import Loader from "../../Components/Share/Loader";
 
 
 const All_Article_Page = () => {
@@ -18,14 +19,13 @@ const All_Article_Page = () => {
 
   // Fetch user
   const { data: users = {} } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users1"],
     enabled: !!user,
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/role/${user.email}`);
       return res.data;
     },
   });
-  console.log(users?.premiumToken)
 
   // Fetch publishers for dropdown
   const { data: publishers = [] } = useQuery({
@@ -45,13 +45,11 @@ const All_Article_Page = () => {
       if (selectedPublisher) params.append("publisher", selectedPublisher);
       if (selectedTags.length > 0) params.append("tags", selectedTags.join(","));
       if (searchText) params.append("search", searchText);
-      console.log(params.toString())
       const res = await axiosSecure.get(`/approved/articles?${params.toString()}`);
       return res.data;
     },
   });
 
-  console.log(articles)
 
   const tagOptions = [
     { value: "Politics", label: "Politics" },
@@ -61,6 +59,11 @@ const All_Article_Page = () => {
     { value: "Sports", label: "Sports" },
     { value: "Other", label: "Other" },
   ];
+
+  const detailsPage = async (id) =>{
+    await axiosSecure.patch(`/articles/view-Increase/${id}`)
+    navigate(`/article/${id}`)
+  }
 
 
   return (
@@ -92,6 +95,10 @@ const All_Article_Page = () => {
         />
       </div>
 
+      {
+        articles.length <= 0 && <h1 className="text-4xl text-center mt-40 font-bold">Article Not Found!</h1>
+      }
+
       {/* Articles Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
@@ -107,10 +114,10 @@ const All_Article_Page = () => {
             <p className="text-sm text-gray-700 mb-3">{article.description.slice(0, 100)}...</p>
 
             <button
-              onClick={() => navigate(`/article/${article._id}`)}
+              onClick={() =>detailsPage(article._id)}
               disabled={article.isPremium && !users.premiumToken}
               className={`btn ${
-                article.isPremium && users.premiumToken
+                article.isPremium && !users.premiumToken
                   ? "btn-disabled"
                   : "btn-primary"
               }`}
@@ -121,7 +128,7 @@ const All_Article_Page = () => {
         ))}
       </div>
 
-      {isLoading && <p className="text-center mt-8">Loading articles...</p>}
+      {isLoading && <Loader/>}
     </div>
   );
 };

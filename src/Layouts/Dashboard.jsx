@@ -8,6 +8,7 @@ import AdminAccessPages from "../Pages/Dashboard/RolebaseAccessPages/AdminAccess
 
 const DashBoard = () => {
   const { role, roleLoading } = useUserRole();
+  console.log(role)
 
   const nav = (
     <>
