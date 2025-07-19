@@ -14,7 +14,7 @@ const useUserRole = () => {
       return res.data;
     },
   });
-  console.log(userInfo)
+  // console.log(userInfo)
 
   return {role:userInfo.role, userInfo, roleLoading:isLoading, refetch};
 };

@@ -18,6 +18,8 @@ import All_Article_Page from '../Pages/All_Article_page/All_Article_Page';
 import ArticleDetails from '../Pages/ArticleDetails/ArticleDetails';
 import PremiumArticles from '../Pages/PremiumArticles/PremiumArticles';
 import SubscriptionRoute from '../PrivateRoutes/SubscriptionRoute';
+import MyArticls from '../Pages/MyArticles/MyArticls';
+import UpdateArticel from '../Pages/UpdateArticle/UpdateArticel';
 
   export const router = createBrowserRouter([
     {
@@ -53,6 +55,14 @@ import SubscriptionRoute from '../PrivateRoutes/SubscriptionRoute';
         {
           path: '/article/:id',
           element: <PriveteRoute><ArticleDetails/></PriveteRoute>
+        },
+        {
+          path: '/my-articles',
+          element: <PriveteRoute><MyArticls/></PriveteRoute>
+        },
+        {
+          path: '/update-article/:id',
+          element: <PriveteRoute><UpdateArticel/></PriveteRoute>
         },
         {
           path: '/premium-articles',

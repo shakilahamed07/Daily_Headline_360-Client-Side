@@ -6,8 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { uploadImg } from "../../Utils/ImgUpload";
 import { FaFileImage } from "react-icons/fa";
-import useAuth from "../../Hooks/useAuth";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const tagOptions = [
   { value: "Politics", label: "Politics" },
@@ -18,11 +17,11 @@ const tagOptions = [
   { value: "Other", label: "Other" },
 ];
 
-const AddArticle = () => {
+const UpdateArticel = () => {
 
   const [imgUrl, setImgUrl] = useState("");
-  const {user} = useAuth();
   const navigate = useNavigate();
+  const {id} = useParams();
 
   const {
     register,
@@ -62,28 +61,24 @@ const AddArticle = () => {
       console.log(publisher.value)
       
 
-      const articleData = {
-        creator_email: user.email,
-        creator_name: user.displayName,
-        creator_img: user.photoURL,
+      const UpdateData = {
         description,
         image: imgUrl,
         publisher: publisher.label,
         publisher_logo: publisher.value,
         title,
         tags,
-        views:0,
-        isPremium: false,
         status: "pending",
-        posted_date: new Date().toISOString(),
+        updated: new Date().toISOString(),
       }
 
       
-      const res = await axiosSecure.post("/articles", articleData);
+      const res = await axiosSecure.patch(`/articles/update/${id}`, UpdateData);
 
-      if(res.data.insertedId){
+      if(res.data){
+        console.log(res.data)
         Swal.fire({
-            title: "Article submitted!",
+            title: "Article updated!",
             text: "Waiting for admin approval.",
             icon: "success",
             confirmButtonColor: "#d33",
@@ -92,7 +87,7 @@ const AddArticle = () => {
             setImgUrl("")
             reset();
             navigate('/my-articles')
-      }
+          }
     } catch (err) {
       Swal.fire({
         title: "Error!",
@@ -105,7 +100,7 @@ const AddArticle = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-10 p-10 shadow-2xl rounded-2xl">
-      <h2 className="text-2xl font-semibold mb-6">Add New Article</h2>
+      <h2 className="text-2xl font-semibold mb-6">Update Your Article</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -218,4 +213,4 @@ const AddArticle = () => {
   );
 };
 
-export default AddArticle;
+export default UpdateArticel;

@@ -60,7 +60,13 @@ const AllArticles = () => {
     });
     if (confirm.isConfirmed) {
       await axiosSecure.delete(`/delete/article/${id}`);
-      Swal.fire("Deleted!", "The article has been deleted.", "success");
+      Swal.fire({
+        title: "Deleted!",
+        text: "The article has been deleted.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
       queryClient.invalidateQueries(["articles"]);
     }
   };
@@ -127,7 +133,7 @@ const AllArticles = () => {
                         : "badge-warning"
                     }`}
                   >
-                    <span className="text-red-600">{!!article?.decline_reason && <BiError size={16} />}</span>
+                    <span className="text-red-600">{article?.status === 'decline' && <BiError size={16} />}</span>
                     {article.status}
                   </span>
                 </td>
