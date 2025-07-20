@@ -1,12 +1,9 @@
 import React, {useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
-// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { toast } from "react-toastify";
 import SocialLogin from "./SocialLogin";
 import axios from "axios";
-
-
 
 const Login = () => {
   const { logInUser} = useContext(AuthContext);
@@ -14,6 +11,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const location = useLocation();
   const emailRef = useRef();
+
+  
 
   const hendleLogin = (e) => {
     e.preventDefault();

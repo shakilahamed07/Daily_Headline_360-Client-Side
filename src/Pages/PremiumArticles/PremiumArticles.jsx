@@ -37,7 +37,7 @@ const PremiumArticles = () => {
         {premiumArticles.map((article) => (
           <div
             key={article._id}
-            className={`card p-4 border rounded shadow-sm flex flex-col justify-between transition hover:shadow-md ${
+            className={`card p-4 border rounded-2xl shadow-sm flex flex-col justify-between transition hover:shadow-md ${
               article.isPremium ? "border-yellow-500" : "border-gray-200"
             }`}
           >
@@ -56,7 +56,7 @@ const PremiumArticles = () => {
 
             <button
               onClick={() => detailsPage(article._id)}
-              className="btn btn-primary"
+              className="btn btn-primary rounded-md"
             >
               Details
             </button>

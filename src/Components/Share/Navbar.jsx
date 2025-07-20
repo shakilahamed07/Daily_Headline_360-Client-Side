@@ -7,12 +7,12 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const Navbar = () => {
-  const { logOutUser, user, loading } = useAuth();
+  const { logOutUser, user, loader } = useAuth();
   const navigate = useNavigate();
 
   const { data: userRole = {}, isLoading } = useQuery({
     queryKey: ["users2"],
-    enabled: !loading && !!user,
+    enabled: !loader && !!user,
     queryFn: async () => {
       const res = await axios.get(
         `http://localhost:5000/users/role/${user.email}`
@@ -129,7 +129,7 @@ const Navbar = () => {
           </div>
           <ul className="menu hidden md:flex menu-horizontal px-1 ">{Links}</ul>
         </div>
-        <div className="md:navbar-end flex relative">
+        <div className="flex relative">
           {!user ? (
             <>
               <Link
@@ -148,7 +148,7 @@ const Navbar = () => {
           ) : (
             <button
               onClick={hendleLogout}
-              className="bg-primary hover:bg-secondary text-white font-bold py-1.5 px-4 rounded-md ml-4 sm:flex"
+              className="bg-primary hover:bg-secondary text-white font-bold py-1.5 px-4 rounded-md ml-4 sm:flex w-26"
             >
               Log Out
             </button>

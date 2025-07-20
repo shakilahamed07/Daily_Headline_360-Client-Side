@@ -104,7 +104,7 @@ const All_Article_Page = () => {
         {articles.map((article) => (
           <div
             key={article._id}
-            className={`card p-4 border rounded shadow-sm flex flex-col justify-between transition hover:shadow-md ${
+            className={`card p-4 border rounded-2xl shadow-sm flex flex-col justify-between transition hover:shadow-md ${
               article.isPremium ? "border-yellow-500" : "border-gray-200"
             }`}
           >
@@ -116,7 +116,7 @@ const All_Article_Page = () => {
             <button
               onClick={() =>detailsPage(article._id)}
               disabled={article.isPremium && !users.premiumToken}
-              className={`btn ${
+              className={`btn rounded-md ${
                 article.isPremium && !users.premiumToken
                   ? "btn-disabled"
                   : "btn-primary"

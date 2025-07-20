@@ -14,18 +14,7 @@ export default function Subscription() {
   const navigate = useNavigate();
 
   const handleSubscribe = async () => {
-    const now = Date.now();
-    const expireTime = now + selected.value * 60 * 1000;
-
-    const premiumExpiry = new Date(expireTime).getTime();
-    const currentTime = Date.now();
-
-    //   await axiosSecure.patch(`/users/set-premium/${user._id}`, {
-    //     premiumUntil: expireTime,
-    //   });
-
-    navigate("", { state: selected });
-    console.log(currentTime, premiumExpiry, expireTime);
+    navigate("/payment", { state: selected });
   };
 
   return (

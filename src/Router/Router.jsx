@@ -20,6 +20,7 @@ import PremiumArticles from '../Pages/PremiumArticles/PremiumArticles';
 import SubscriptionRoute from '../PrivateRoutes/SubscriptionRoute';
 import MyArticls from '../Pages/MyArticles/MyArticls';
 import UpdateArticel from '../Pages/UpdateArticle/UpdateArticel';
+import Payment from '../Pages/Home/Subscription/Payment';
 
   export const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ import UpdateArticel from '../Pages/UpdateArticle/UpdateArticel';
         {
           path: '/subscription',
           element: <PriveteRoute><Subscription/></PriveteRoute>
+        },
+        {
+          path: '/payment',
+          element: <PriveteRoute><Payment/></PriveteRoute>
         },
         {
           path: '/add-articles',
