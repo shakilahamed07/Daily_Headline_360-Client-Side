@@ -21,6 +21,8 @@ import SubscriptionRoute from '../PrivateRoutes/SubscriptionRoute';
 import MyArticls from '../Pages/MyArticles/MyArticls';
 import UpdateArticel from '../Pages/UpdateArticle/UpdateArticel';
 import Payment from '../Pages/Home/Subscription/Payment';
+import MakeAdmin from '../Pages/Dashboard/MakeAdmin/MakeAdmin';
+import MyProfile from '../Pages/MyProfile/MyProfile';
 
   export const router = createBrowserRouter([
     {
@@ -40,6 +42,10 @@ import Payment from '../Pages/Home/Subscription/Payment';
         {
           path: '/register',
           Component: Register
+        },
+        {
+          path: '/profile',
+          Component: MyProfile
         },
         {
           path: '/subscription',
@@ -90,6 +96,10 @@ import Payment from '../Pages/Home/Subscription/Payment';
         {
           path:'all-articles',
           element: <AdminRoutes><AllArticles/></AdminRoutes>
+        },
+        {
+          path:'make-admin',
+          element: <AdminRoutes><MakeAdmin/></AdminRoutes>
         },
       ]
     }

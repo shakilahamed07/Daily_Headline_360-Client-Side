@@ -32,6 +32,8 @@ const Register = () => {
       return setPassE("At least 1 lowercase [a-z] letter");
     } else if (!/^(?=.*[A-Z])/.test(password)) {
       return setPassE("At least 1 Uppercase [A-Z] letter");
+    } else if (!/[^A-Za-z0-9 ]/.test(password)) {
+      return setPassE("At least 1 special character");
     } else {
       setNameE("");
     }

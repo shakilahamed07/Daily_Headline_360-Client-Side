@@ -156,13 +156,13 @@ const Navbar = () => {
 
           {user && (
             <>
-              <div>
+              <Link to="/profile">
                 <img
                   className="h-10 w-10 bg-base-300 rounded-full ml-5 border border-primary"
                   src={user?.photoURL}
                   alt=""
                 />
-              </div>
+              </Link>
             </>
           )}
         </div>
