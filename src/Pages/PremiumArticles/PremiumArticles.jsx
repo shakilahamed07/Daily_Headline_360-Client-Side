@@ -33,7 +33,7 @@ const PremiumArticles = () => {
       )}
 
       {/* premiumArticles Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {premiumArticles.map((article) => (
           <div
             key={article._id}

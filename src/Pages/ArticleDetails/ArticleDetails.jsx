@@ -47,7 +47,7 @@ const ArticleDetails = () => {
         ))}
       </div>
 
-      <p className="text-sm text-gray-600 mb-2 font-medium ml-1">Views: {details.views}</p>
+      <p className="text-sm text-gray-600 mb-2 font-medium ml-1"> 👁 Views: {details.views}</p>
     </div>
   );
 };

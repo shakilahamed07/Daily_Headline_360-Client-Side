@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useNavigate } from 'react-router';
 import useAuth from './useAuth';
+import Loader from '../Components/Share/Loader';
 
 const axiosSecure = axios.create({
     baseURL:'http://localhost:5000',
@@ -16,7 +17,7 @@ const useAxiosSecure = () => {
 
     // request
     axiosSecure.interceptors.request.use(config =>{
-        config.headers.authorization = `Bearer ${user.accessToken}`
+        config.headers.authorization = `Bearer ${user?.accessToken}`
         return config
     }, error =>{
         return Promise.reject(error);

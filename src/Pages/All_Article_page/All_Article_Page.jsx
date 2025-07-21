@@ -67,7 +67,7 @@ const All_Article_Page = () => {
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <div className="md:sticky top-20 z-40 bg-base-100 px-2 pt-3 ">
+      <div className="lg:sticky top-20 z-40 bg-base-100 px-2 pt-3 ">
         <h1 className="text-2xl font-bold mb-4">All Articles</h1>
 
         {/* Filters */}
@@ -103,7 +103,7 @@ const All_Article_Page = () => {
       )}
 
       {/* Articles Grid */}
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {articles.map((article) => (
           <div
             key={article._id}

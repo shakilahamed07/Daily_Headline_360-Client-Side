@@ -18,6 +18,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
   const QueryClient = useQueryClient();
+  
 
   //* Create User
   const crateUser = (email, Password) => {
@@ -51,6 +52,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (current) => {
       setUser(current);
+      setLoader(false);
       
       if (current?.email) {
         const res = await axios.get(
@@ -67,7 +69,7 @@ const AuthProvider = ({ children }) => {
             `http://localhost:5000/users/premium-null/${dbUser._id}`
           );
 
-          QueryClient.invalidateQueries(["users2"]);
+          QueryClient.invalidateQueries(["users3"]);
 
           Swal.fire({
             title: "⏳ Subscription Expired!",
@@ -79,7 +81,6 @@ const AuthProvider = ({ children }) => {
           });
         }
       }
-      setLoader(false);
     });
 
     

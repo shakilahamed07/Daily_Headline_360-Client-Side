@@ -3,25 +3,15 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import logo from "../../assets/Logo.png";
 import useAuth from "../../Hooks/useAuth";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { FaHome, FaPlusCircle, FaListAlt, FaCrown, FaRegNewspaper, FaUserShield } from "react-icons/fa";
+import { FaHome, FaPlusCircle, FaListAlt, FaCrown, FaRegNewspaper, FaUserShield, FaBell } from "react-icons/fa";
 import { MdSubscriptions } from "react-icons/md";
+import useUserRole from "../../Hooks/useUserRole";
 
 const Navbar = () => {
-  const { logOutUser, user, loader } = useAuth();
+  const { logOutUser, user} = useAuth();
   const navigate = useNavigate();
 
-  const { data: userRole = {}, isLoading } = useQuery({
-    queryKey: ["users2"],
-    enabled: !loader && !!user,
-    queryFn: async () => {
-      const res = await axios.get(
-        `http://localhost:5000/users/role/${user.email}`
-      );
-      return res.data;
-    },
-  });
+  const {roleLoading, userInfo} = useUserRole()
 
   const hendleLogout = () => {
     logOutUser()
@@ -34,7 +24,7 @@ const Navbar = () => {
 
 const Links = (
   <>
-    <li>
+    <li >
       <NavLink to="/" className={`font-medium md:text-white flex items-center gap-2`}>
         <FaHome /> Home
       </NavLink>
@@ -60,14 +50,14 @@ const Links = (
             to="/subscription"
             className={`font-medium md:text-white flex items-center gap-2`}
           >
-            <MdSubscriptions /> Subscription
+            <FaBell /> Subscription
           </NavLink>
         </li>
 
-        {!isLoading && userRole.premiumToken && (
+        {!roleLoading && userInfo?.premiumToken && (
           <li>
             <NavLink to="/premium-articles" className={`font-medium md:text-white flex items-center gap-2`}>
-              <FaCrown /> Premium Articles*
+              <FaCrown /> Premium Articles
             </NavLink>
           </li>
         )}
@@ -78,7 +68,7 @@ const Links = (
           </NavLink>
         </li>
 
-        {!isLoading && userRole.role === "admin" && (
+        {!roleLoading && userInfo?.role === "admin" && (
           <li>
             <NavLink to="/dashboard" className={`font-medium md:text-white flex items-center gap-2`}>
               <FaUserShield /> Dashboard
@@ -92,8 +82,8 @@ const Links = (
 
 
   return (
-    <div className="bg-base-300 border-b-3 border-primary">
-      <div className="navbar mb-3 justify-between items-center max-w-[1350px] mx-auto">
+    <div className="bg-base-300 border-b-2 border-primary">
+      <div className="navbar justify-between items-center max-w-[1350px] mx-auto">
         <div className="flex ">
           <div className="dropdown">
             <div
@@ -122,8 +112,8 @@ const Links = (
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 w-60 h-screen p-2 -mt-13 shadow flex justify-start -ml-4 z-95"
             >
-              <li><img className="w-35 mb-3" src={logo} alt="" /></li>
-              <hr className="bg-gray-50 mb-3"/>
+              <a><img className="w-35 mb-3 sm:hidden" src={logo} alt="" /></a>
+              <hr className="bg-gray-50 mb-3 sm:hidden"/>
               {Links}
             </ul>
           </div>
@@ -148,7 +138,7 @@ const Links = (
           ) : (
             <button
               onClick={hendleLogout}
-              className="bg-primary hover:bg-secondary text-white font-bold py-1.5 px-4 rounded-md ml-4 sm:flex w-26"
+              className="bg-primary hover:bg-secondary text-white font-bold py-1.5 px-4 rounded-md ml-4 sm:flex w-25 sm:w-30 lg:w-25 h-10"
             >
               Log Out
             </button>
@@ -156,7 +146,7 @@ const Links = (
 
           {user && (
             <>
-              <Link to="/profile">
+              <Link to="/profile" className="pr-1">
                 <img
                   className="h-10 w-10 bg-base-300 rounded-full ml-5 border border-primary"
                   src={user?.photoURL}

@@ -18,7 +18,7 @@ const SocialLogin = () => {
         toast.success("Login successful");
         
         //update database
-        await axios.post("http://localhost:5000/users", {
+        await axios.post("/users", {
             email: result.user.email,
             img: result.user.photoURL,
             name: result.user.displayName
