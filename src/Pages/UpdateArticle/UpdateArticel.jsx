@@ -58,7 +58,6 @@ const UpdateArticel = () => {
       const tags = JSON.parse(formData.get("tags"));
 
       const {description, publisher, title} = data;
-      console.log(publisher.value)
       
 
       const UpdateData = {
@@ -76,7 +75,6 @@ const UpdateArticel = () => {
       const res = await axiosSecure.patch(`/articles/update/${id}`, UpdateData);
 
       if(res.data){
-        console.log(res.data)
         Swal.fire({
             title: "Article updated!",
             text: "Waiting for admin approval.",

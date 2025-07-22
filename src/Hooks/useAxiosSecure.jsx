@@ -12,12 +12,15 @@ const axiosSecure = axios.create({
 
 const useAxiosSecure = () => {
 
-    const {user, logOutUser} = useAuth();
+    const { logOutUser} = useAuth();
     const navigate = useNavigate();
 
     // request
     axiosSecure.interceptors.request.use(config =>{
-        config.headers.authorization = `Bearer ${user?.accessToken}`
+
+        const token = localStorage.getItem("access-token");
+          config.headers.authorization = `Bearer ${token}`;
+
         return config
     }, error =>{
         return Promise.reject(error);
@@ -27,7 +30,7 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.response.use(res=>{
         return res;
     },error=>{
-        console.log(error.status)
+        // console.log(error.status)
         const status = error.status;
         if(status === 403){
             navigate('/')

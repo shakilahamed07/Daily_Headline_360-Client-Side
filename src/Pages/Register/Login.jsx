@@ -23,14 +23,14 @@ const Login = () => {
     logInUser(email, password)
       .then( async () => {
 
+        navigate(location.state || "/");
+        toast.success('Login successful');
+
         //update database
         await axios.post("http://localhost:5000/users", {
           email: email,
           
         });
-
-        navigate(location.state || "/");
-        toast.success('Login successful');
       })
       .catch((error) => {
         setError("Your password & email not macth");

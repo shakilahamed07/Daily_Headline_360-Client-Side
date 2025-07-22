@@ -3,15 +3,23 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import logo from "../../assets/Logo.png";
 import useAuth from "../../Hooks/useAuth";
-import { FaHome, FaPlusCircle, FaListAlt, FaCrown, FaRegNewspaper, FaUserShield, FaBell } from "react-icons/fa";
+import {
+  FaHome,
+  FaPlusCircle,
+  FaListAlt,
+  FaCrown,
+  FaRegNewspaper,
+  FaUserShield,
+  FaBell,
+} from "react-icons/fa";
 import { MdSubscriptions } from "react-icons/md";
 import useUserRole from "../../Hooks/useUserRole";
 
 const Navbar = () => {
-  const { logOutUser, user} = useAuth();
+  const { logOutUser, user } = useAuth();
   const navigate = useNavigate();
 
-  const {roleLoading, userInfo} = useUserRole()
+  const { roleLoading, userInfo } = useUserRole();
 
   const hendleLogout = () => {
     logOutUser()
@@ -22,64 +30,81 @@ const Navbar = () => {
       .catch(() => {});
   };
 
-const Links = (
-  <>
-    <li >
-      <NavLink to="/" className={`font-medium md:text-white flex items-center gap-2`}>
-        <FaHome /> Home
-      </NavLink>
-    </li>
+  const Links = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={`font-medium md:text-white flex items-center gap-2`}
+        >
+          <FaHome /> Home
+        </NavLink>
+      </li>
 
-    {user && (
-      <>
-        <li>
-          <NavLink to="/add-articles" className={`font-medium md:text-white flex items-center gap-2`}>
-            <FaPlusCircle /> Add Articles
-          </NavLink>
-        </li>
+      <li>
+        <NavLink
+          to="/all-articles-page"
+          className={`font-medium md:text-white flex items-center gap-2`}
+        >
+          <FaListAlt /> All Articles
+        </NavLink>
+      </li>
 
-        <li>
-          <NavLink to="/all-articles-page" className={`font-medium md:text-white flex items-center gap-2`}>
-            <FaListAlt /> All Articles
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            onClick={() => window.scrollTo({ top: 120, behavior: "smooth" })}
-            to="/subscription"
-            className={`font-medium md:text-white flex items-center gap-2`}
-          >
-            <FaBell /> Subscription
-          </NavLink>
-        </li>
-
-        {!roleLoading && userInfo?.premiumToken && (
+      {user && (
+        <>
           <li>
-            <NavLink to="/premium-articles" className={`font-medium md:text-white flex items-center gap-2`}>
-              <FaCrown /> Premium Articles
+            <NavLink
+              to="/add-articles"
+              className={`font-medium md:text-white flex items-center gap-2`}
+            >
+              <FaPlusCircle /> Add Articles
             </NavLink>
           </li>
-        )}
 
-        <li>
-          <NavLink to="/my-articles" className={`font-medium md:text-white flex items-center gap-2`}>
-            <FaRegNewspaper /> My Articles
-          </NavLink>
-        </li>
-
-        {!roleLoading && userInfo?.role === "admin" && (
           <li>
-            <NavLink to="/dashboard" className={`font-medium md:text-white flex items-center gap-2`}>
-              <FaUserShield /> Dashboard
+            <NavLink
+              onClick={() => window.scrollTo({ top: 120, behavior: "smooth" })}
+              to="/subscription"
+              className={`font-medium md:text-white flex items-center gap-2`}
+            >
+              <FaBell /> Subscription
             </NavLink>
           </li>
-        )}
-      </>
-    )}
-  </>
-);
 
+          {!roleLoading && userInfo?.premiumToken && (
+            <li>
+              <NavLink
+                to="/premium-articles"
+                className={`font-medium md:text-white flex items-center gap-2`}
+              >
+                <FaCrown /> Premium Articles
+              </NavLink>
+            </li>
+          )}
+
+          <li>
+            <NavLink
+              to="/my-articles"
+              className={`font-medium md:text-white flex items-center gap-2`}
+            >
+              <FaRegNewspaper /> My Articles
+            </NavLink>
+          </li>
+
+          {!roleLoading && userInfo?.role === "admin" && (
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={`font-medium md:text-white flex items-center gap-2`}
+              >
+                <FaUserShield /> Dashboard
+              </NavLink>
+            </li>
+          )}
+        </>
+      )}
+    </>
+  );
 
   return (
     <div className="bg-base-300 border-b-2 border-primary">
@@ -112,8 +137,10 @@ const Links = (
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 w-60 h-screen p-2 -mt-13 shadow flex justify-start -ml-4 z-95"
             >
-              <a><img className="w-35 mb-3 sm:hidden" src={logo} alt="" /></a>
-              <hr className="bg-gray-50 mb-3 sm:hidden"/>
+              <a>
+                <img className="w-35 mb-3 sm:hidden" src={logo} alt="" />
+              </a>
+              <hr className="bg-gray-50 mb-3 sm:hidden" />
               {Links}
             </ul>
           </div>

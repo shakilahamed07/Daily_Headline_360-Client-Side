@@ -16,6 +16,7 @@ const SocialLogin = () => {
     signInWithPopup(auth, provider)
       .then( async (result) => {
         toast.success("Login successful");
+        navigate(location.state || "/");
         
         //update database
         await axios.post("/users", {
@@ -24,7 +25,6 @@ const SocialLogin = () => {
             name: result.user.displayName
         });
         
-        navigate(location.state || "/");
       })
       .catch((error) => {
         console.log(error.message);

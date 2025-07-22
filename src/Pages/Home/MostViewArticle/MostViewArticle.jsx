@@ -16,15 +16,16 @@ const MostViewArticle = () => {
     },
   });
 
-  console.log(trendingArticles)
 
   if (isLoading) return <Loader/>;
 
   return (
-    <div className="max-w-7xl mx-auto my-5 shadow rounded-2xl">
+    <div className="mx-2">
+      <div className="max-w-7xl mx-auto my-5 shadow rounded-2xl">
       <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} interval={4000}
-        swipeable={true}
-        stopOnHover={false}>
+        stopOnHover={false}
+        >
+        
         {trendingArticles.map((article) => (
           <div key={article._id} className="rounded-xl overflow-hidden shadow-lg">
             <img
@@ -44,6 +45,7 @@ const MostViewArticle = () => {
           </div>
         ))}
       </Carousel>
+    </div>
     </div>
   );
 };

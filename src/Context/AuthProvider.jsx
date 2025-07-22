@@ -45,12 +45,20 @@ const AuthProvider = ({ children }) => {
   //* Log out
   const logOutUser = () => {
     setLoader(true);
+    localStorage.removeItem("access-token");
     return signOut(auth);
   };
 
   //* on State user
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (current) => {
+
+      if(current){
+        axios.post("http://localhost:5000/jwt", { email: current.email }).then((res) => {
+          localStorage.setItem("access-token", res.data.token);
+        });
+      }
+
       setUser(current);
       setLoader(false);
       

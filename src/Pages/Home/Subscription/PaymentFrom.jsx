@@ -22,7 +22,12 @@ const PaymentFrom = () => {
   const now = Date.now();
   const expireTime = now + state.value * 60 * 1000;
 
-  console.log(expireTime, priceInCents);
+  const generateTrackingId = () => {
+    const prefix = "TRK";
+    const randomPart = Math.random().toString(36).substr(2, 6).toUpperCase();
+    const timestamp = Date.now().toString().slice(-5); 
+    return `${prefix}-${randomPart}-${timestamp}`;
+  };
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -78,6 +83,18 @@ const PaymentFrom = () => {
           await axiosSecure.patch(`/users/subscription/${user.email}`,{expireTime})
           queryClient.invalidateQueries(["users2"]);
 
+          const paymentData = {
+            name: user.displayName,
+            email: user.email,
+            amount: priceInCents/100,
+            transactionId: generateTrackingId(),
+            pay_date: new Date().toISOString()
+          };
+
+          //* step:4 save payment data
+          await axiosSecure.post('/payments', paymentData);
+
+          navigate('/premium-articles')
           Swal.fire({
             title: "Congratulation! Active your subscription",
             text: `✅ Payment Successful!`,
@@ -85,7 +102,6 @@ const PaymentFrom = () => {
             confirmButtonText: "OK",
             timer: 3000,
           });
-          navigate('/premium-articles')
         }
       }
     }

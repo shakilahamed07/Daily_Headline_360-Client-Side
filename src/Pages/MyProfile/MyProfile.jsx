@@ -21,7 +21,6 @@ const MyProfile = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
-    console.log(name, imgUrl);
 
     updateUser({ displayName: name, photoURL: imgUrl })
       .then(() => {

@@ -23,6 +23,7 @@ import UpdateArticel from '../Pages/UpdateArticle/UpdateArticel';
 import Payment from '../Pages/Home/Subscription/Payment';
 import MakeAdmin from '../Pages/Dashboard/MakeAdmin/MakeAdmin';
 import MyProfile from '../Pages/MyProfile/MyProfile';
+import DashboardHome from '../Pages/Dashboard/DashboardHome/DashboardHome';
 
   export const router = createBrowserRouter([
     {
@@ -61,7 +62,7 @@ import MyProfile from '../Pages/MyProfile/MyProfile';
         },
         {
           path: '/all-articles-page',
-          element: <PriveteRoute><All_Article_Page/></PriveteRoute>
+          Component: All_Article_Page
         },
         {
           path: '/article/:id',
@@ -87,7 +88,7 @@ import MyProfile from '../Pages/MyProfile/MyProfile';
       children:[
         {
           index: true,
-          element: <p>Dashboard Home</p>
+          element: <AdminRoutes><DashboardHome/></AdminRoutes>
         },
         {
           path:'add-publisher',

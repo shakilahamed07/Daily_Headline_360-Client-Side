@@ -59,7 +59,7 @@ const AddArticle = () => {
       const tags = JSON.parse(formData.get("tags"));
 
       const {description, publisher, title} = data;
-      console.log(publisher.value)
+      // console.log(publisher.value)
       
 
       const articleData = {

@@ -15,7 +15,6 @@ const PremiumArticles = () => {
       return res.data;
     },
   });
-  console.log(premiumArticles);
 
   const detailsPage = async (id) => {
     await axiosSecure.patch(`/articles/view-Increase/${id}`);

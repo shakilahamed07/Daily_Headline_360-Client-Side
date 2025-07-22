@@ -8,7 +8,7 @@ import AdminAccessPages from "../Pages/Dashboard/RolebaseAccessPages/AdminAccess
 
 const DashBoard = () => {
   const { role, roleLoading } = useUserRole();
-  console.log(role)
+  // console.log(role)
 
   const nav = (
     <>
@@ -22,7 +22,7 @@ const DashBoard = () => {
           }
         >
           <FaHome />
-          Home
+          Back Home Page
         </NavLink>
       </li>
       
@@ -51,7 +51,7 @@ const DashBoard = () => {
       <div className="drawer-content">
         {/* Page content here */}
         {/* Navbar */}
-        <div className="navbar w-full  lg:hidden">
+        <div className="navbar w-full  lg:hidden bg-base-300">
           <div className="flex-none">
             <label
               htmlFor="my-drawer-2"
@@ -62,7 +62,7 @@ const DashBoard = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                className="inline-block h-6 w-6 stroke-current"
+                className="inline-block h-6 w-6 stroke-current text-white"
               >
                 <path
                   strokeLinecap="round"
