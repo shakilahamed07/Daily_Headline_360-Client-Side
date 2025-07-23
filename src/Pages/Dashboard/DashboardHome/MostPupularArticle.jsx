@@ -37,7 +37,7 @@ const MostPupularArticle = () => {
   };
 
   return (
-    <div className=" mt-2 bg-white rounded-xl shadow-md">
+    <div className="bg-white shadow-md p-4 rounded-xl">
       <Chart
         chartType="AreaChart"
         width="100%"

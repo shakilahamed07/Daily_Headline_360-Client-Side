@@ -9,10 +9,9 @@ import {
   FaListAlt,
   FaCrown,
   FaRegNewspaper,
-  FaUserShield,
   FaBell,
 } from "react-icons/fa";
-import { MdSubscriptions } from "react-icons/md";
+import { MdDashboard, MdSubscriptions } from "react-icons/md";
 import useUserRole from "../../Hooks/useUserRole";
 
 const Navbar = () => {
@@ -97,7 +96,7 @@ const Navbar = () => {
                 to="/dashboard"
                 className={`font-medium md:text-white flex items-center gap-2`}
               >
-                <FaUserShield /> Dashboard
+                <MdDashboard /> Dashboard
               </NavLink>
             </li>
           )}

@@ -18,7 +18,6 @@ const Home = () => {
       <StatisticPage />
       <SubscriptionPricing />
       {!userInfo.premiumToken && <SubscriptionPromptModal />}
-      
       <FaqSection/>
       <ContactUs/>
     </div>

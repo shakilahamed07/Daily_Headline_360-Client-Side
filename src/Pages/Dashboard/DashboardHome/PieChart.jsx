@@ -24,13 +24,14 @@ const PieChart = () => {
   ];
 
   return (
-    <div className=" bg-white  shadow-md">
+    <div className="bg-white shadow-md p-4 rounded-xl">
       <Chart
         chartType="PieChart"
         data={chartData}
         options={{
           title: "Article post by Publisher",
           is3D: true,
+          backgroundColor: "#ffffff",
         }}
         width={"100%"}
         height={"400px"}

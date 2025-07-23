@@ -39,7 +39,7 @@ const BarChart = () => {
     };
   
     return (
-      <div className=" mx-auto p-6">
+      <div className="bg-white shadow-md p-4 rounded-xl">
         <Chart
           chartType="ColumnChart"
           width="100%"

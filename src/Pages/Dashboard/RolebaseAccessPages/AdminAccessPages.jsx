@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUserShield } from 'react-icons/fa';
+import { FaUsers} from 'react-icons/fa';
 import { IoIosAddCircle } from 'react-icons/io';
 import { MdArticle } from 'react-icons/md';
 import { NavLink } from 'react-router';
@@ -17,7 +17,7 @@ const AdminAccessPages = () => {
                     : "flex items-center gap-2 p-2"
                 }
               >
-                <FaUserShield className="text-lg" />
+                <FaUsers className="text-lg" />
                 All Users
               </NavLink>
             </li>
