@@ -44,7 +44,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/all-articles-page"
-          className={`font-medium md:text-white flex items-center gap-2`}
+          className={`font-medium md:text-white flex items-center gap-2 `}
         >
           <FaListAlt /> All Articles
         </NavLink>
@@ -107,8 +107,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-base-300 border-b-2 border-primary">
-      <div className="navbar justify-between items-center max-w-[1350px] mx-auto">
+    <div className="bg-base-300 border-b-2 ">
+      <div className="navbar justify-between items-center max-w-[1250px] mx-auto">
         <div className="flex ">
           <div className="dropdown">
             <div

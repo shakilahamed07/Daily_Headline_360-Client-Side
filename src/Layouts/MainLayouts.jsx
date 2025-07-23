@@ -11,7 +11,7 @@ const MainLayouts = () => {
       <header className="sticky top-0 z-50">
         <Navbar />
       </header>
-      <main className="min-h-[calc(100vh-(285px))] max-w-[1350px] mx-auto ">
+      <main className="min-h-[calc(100vh-(285px))] max-w-[1250px] mx-auto ">
         <Outlet></Outlet>
       </main>
       <Footer />

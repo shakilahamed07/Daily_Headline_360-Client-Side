@@ -1,5 +1,5 @@
 // AllArticles.jsx
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Select from "react-select";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -110,6 +110,8 @@ const All_Article_Page = () => {
     setCuretPage(0);
   };
 
+  {isLoading && <Loader />}
+
   return (
     <div className="p-4 max-w-7xl mx-auto">
       <div className="lg:sticky top-17 z-40 bg-base-100 px-2 pt-3 ">
@@ -185,8 +187,6 @@ const All_Article_Page = () => {
           </div>
         ))}
       </div>
-
-      {isLoading && <Loader />}
 
       {/* //^ pagination */}
       <div className="flex items-center justify-center mx-auto mt-10 ">

@@ -67,7 +67,6 @@ const UpdateArticel = () => {
         publisher_logo: publisher.value,
         title,
         tags,
-        status: "pending",
         updated: new Date().toISOString(),
       }
 

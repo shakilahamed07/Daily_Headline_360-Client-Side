@@ -79,9 +79,9 @@ const DashBoard = () => {
         </div>
 
         {/* Page content here */}
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="mx-3">
-            <Outlet /> {/*other page content here */}
+            <Outlet />
           </div>
         </div>
       </div>

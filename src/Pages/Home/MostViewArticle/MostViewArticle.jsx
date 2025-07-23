@@ -20,8 +20,7 @@ const MostViewArticle = () => {
   if (isLoading) return <Loader/>;
 
   return (
-    <div className="mx-2">
-      <div className="max-w-7xl mx-auto my-5 shadow rounded-2xl">
+    <div className="mx-2 mt-5">
       <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} interval={4000}
         stopOnHover={false}
         >
@@ -34,8 +33,8 @@ const MostViewArticle = () => {
               className="md:h-96 w-full object-cover"
             />
             <div className="p-4 bg-white text-left mb-5">
-              <h3 className="text-xl font-semibold">{article.title}</h3>
-              <p className="text-sm text-gray-500 mb-1">
+              <h3 className="text-3xl font-semibold mb-1">{article.title}</h3>
+              <p className="text-sm text-gray-500 mb-5">
                 Publisher: {article.publisher}
               </p>
               <p className="text-sm text-gray-600 line-clamp-3">
@@ -45,7 +44,6 @@ const MostViewArticle = () => {
           </div>
         ))}
       </Carousel>
-    </div>
     </div>
   );
 };

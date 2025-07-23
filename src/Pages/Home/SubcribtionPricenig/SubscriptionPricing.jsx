@@ -31,7 +31,7 @@ export default function SubscriptionPricing() {
         {plans.map((plan, index) => (           
           <div
             key={index}
-            className='border pt-10 pb-5 px-5 rounded-2xl hover:border-primary hover:scale-105 transition-all hover:shadow-xl shadow-red-200 max-w-[500px]'
+            className='border pt-10 pb-5 px-5 rounded-2xl hover:border-primary hover:scale-105 transition-all hover:shadow-xl shadow-red-200'
           >
             <h3 className="text-xl font-semibold mb-4 text-center">
               {plan.name}
