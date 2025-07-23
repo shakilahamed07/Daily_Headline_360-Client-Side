@@ -60,7 +60,7 @@ const MyArticles = () => {
           Article Not Found!
         </h1>
       ) : (
-        <div className="overflow-x-auto">
+        <div className=" overflow-x-auto">
           <table className="table w-full">
             <thead>
               <tr>

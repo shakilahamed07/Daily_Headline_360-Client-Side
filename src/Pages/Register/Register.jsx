@@ -34,6 +34,8 @@ const Register = () => {
       return setPassE("At least 1 Uppercase [A-Z] letter");
     } else if (!/[^A-Za-z0-9 ]/.test(password)) {
       return setPassE("At least 1 special character");
+    } else if (!/[0-9]/.test(password)) {
+      return setPassE("At least 1 numeric character required");
     } else {
       setNameE("");
     }

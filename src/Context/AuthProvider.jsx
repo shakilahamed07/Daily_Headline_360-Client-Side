@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
       
       if (current?.email) {
         const res = await axios.get(
-          `http://localhost:5000/users/role/${current?.email}`
+          `http://localhost:5000/user/premiumToken/${current?.email}`
         );
         const dbUser = res?.data;
 
@@ -73,9 +73,16 @@ const AuthProvider = ({ children }) => {
         const expireTime = new Date(dbUser?.premiumToken).getTime();
 
         if (dbUser.premiumToken && now > expireTime) {
+          const token = localStorage.getItem("access-token");
           await axios.patch(
-            `http://localhost:5000/users/premium-null/${dbUser._id}`
-          );
+            `http://localhost:5000/users/premium-null/${dbUser._id}`,
+            {}, // empty request body
+            {
+              headers: {
+                authorization: `Bearer ${token}`
+              }
+            }
+          );          
 
           QueryClient.invalidateQueries(["users3"]);
 

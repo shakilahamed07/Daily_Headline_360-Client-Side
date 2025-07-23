@@ -98,7 +98,7 @@ const AddArticle = () => {
         title: "Error!",
         text: err.response?.data?.message || err.message,
         icon: "error",
-        timer: 1500
+        timer: 3500
       });
     }
   };

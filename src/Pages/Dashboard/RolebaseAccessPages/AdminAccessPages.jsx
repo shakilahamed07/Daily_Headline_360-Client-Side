@@ -18,7 +18,7 @@ const AdminAccessPages = () => {
                 }
               >
                 <FaUserShield className="text-lg" />
-                Make Admin
+                All Users
               </NavLink>
             </li>
   

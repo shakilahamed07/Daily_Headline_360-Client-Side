@@ -1,15 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useState } from "react";
 
 const MakeAdmin = () => {
   const axiosSecure = useAxiosSecure();
 
+   //^ for pagination
+   const [curetPage, setCuretPage] = useState(0);
+   const [itemsParPage, setItemsParPage] = useState(10);
+   const [count, setCount] = useState(0);
+   const numberOfPage = Math.ceil(count / itemsParPage);
+   const pages = [...Array(numberOfPage).keys()];
+ 
+   // Fetch article count
+   const { data: c = {} } = useQuery({
+     queryKey: ["usersCount"],
+     queryFn: async () => {
+       const res = await axiosSecure.get("/users/count");
+       setCount(res.data);
+       return res.data;
+     },
+   });
+
   // Fetch all users
   const { data: users = [], refetch } = useQuery({
-    queryKey: ["all-users"],
+    queryKey: ["all-users", curetPage, itemsParPage],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get(`/users?page=${curetPage}&size=${itemsParPage}`);
       return res.data;
     },
   });
@@ -30,6 +48,26 @@ const MakeAdmin = () => {
       Swal.fire("Error", "Failed to make user admin.", `${error}`);
     }
   };
+
+    //^ pagination
+
+    const handlePrev = () => {
+      if (curetPage > 0) {
+        setCuretPage(curetPage - 1);
+      }
+    };
+  
+    const handleNext = () => {
+      if (pages.length - 1 > curetPage) {
+        setCuretPage(curetPage + 1);
+      }
+    };
+  
+    const handleItemPerPage = (e) => {
+      const val = parseInt(e.target.value);
+      setItemsParPage(val);
+      setCuretPage(0);
+    };
 
   return (
     <div className="p-6">
@@ -75,6 +113,37 @@ const MakeAdmin = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* //^ pagination */}
+      <div className="flex items-center justify-center mx-auto mt-10 mb-5 ">
+        <button className="btn btn-primary" onClick={handlePrev}>
+          Prev
+        </button>
+        {pages.map((page) => (
+          <button
+            onClick={() => setCuretPage(page)}
+            className={`${
+              curetPage === page ? "bg-primary text-white" : ""
+            } m-2 py-1 px-2 border border-primary rounded-md`}
+            key={page}
+          >
+            {page + 1}
+          </button>
+        ))}
+        <button className="btn btn-primary" onClick={handleNext}>
+          Next
+        </button>
+        <select
+          value={itemsParPage}
+          onChange={handleItemPerPage}
+          className="border ml-3 border-primary p-2 rounded-md"
+        >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
       </div>
     </div>
   );

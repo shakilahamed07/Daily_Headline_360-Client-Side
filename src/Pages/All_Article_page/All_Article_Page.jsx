@@ -1,5 +1,5 @@
 // AllArticles.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -15,6 +15,24 @@ const All_Article_Page = () => {
   const [searchText, setSearchText] = useState("");
   const [selectedPublisher, setSelectedPublisher] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
+
+  //^ for pagination
+  const [curetPage, setCuretPage] = useState(0);
+  const [itemsParPage, setItemsParPage] = useState(8);
+  const [count, setCount] = useState(0);
+  const numberOfPage = Math.ceil(count / itemsParPage);
+  const pages = [...Array(numberOfPage).keys()];
+  // console.log(pages, count)
+
+  // Fetch article count
+  const { data: a = {} } = useQuery({
+    queryKey: ["countArticle"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/approved/articles/count-page");
+      setCount(res.data.count);
+      return res.data;
+    },
+  });
 
   // Fetch user
   const { data: users = {} } = useQuery({
@@ -37,7 +55,14 @@ const All_Article_Page = () => {
 
   // Fetch articles with filters
   const { data: articles = [], isLoading } = useQuery({
-    queryKey: ["articles", selectedPublisher, selectedTags, searchText],
+    queryKey: [
+      "articles",
+      selectedPublisher,
+      selectedTags,
+      searchText,
+      curetPage,
+      itemsParPage,
+    ],
     queryFn: async () => {
       const params = new URLSearchParams();
       if (selectedPublisher) params.append("publisher", selectedPublisher);
@@ -45,7 +70,7 @@ const All_Article_Page = () => {
         params.append("tags", selectedTags.join(","));
       if (searchText) params.append("search", searchText);
       const res = await axiosSecure.get(
-        `/approved/articles?${params.toString()}`
+        `/approved/articles?${params.toString()}&page=${curetPage}&size=${itemsParPage}`
       );
       return res.data;
     },
@@ -65,9 +90,29 @@ const All_Article_Page = () => {
     navigate(`/article/${id}`);
   };
 
+  //^ pagination
+
+  const handlePrev = () => {
+    if (curetPage > 0) {
+      setCuretPage(curetPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (pages.length - 1 > curetPage) {
+      setCuretPage(curetPage + 1);
+    }
+  };
+
+  const handleItemPerPage = (e) => {
+    const val = parseInt(e.target.value);
+    setItemsParPage(val);
+    setCuretPage(0);
+  };
+
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <div className="lg:sticky top-20 z-40 bg-base-100 px-2 pt-3 ">
+      <div className="lg:sticky top-17 z-40 bg-base-100 px-2 pt-3 ">
         <h1 className="text-2xl font-bold mb-4">All Articles</h1>
 
         {/* Filters */}
@@ -142,6 +187,37 @@ const All_Article_Page = () => {
       </div>
 
       {isLoading && <Loader />}
+
+      {/* //^ pagination */}
+      <div className="flex items-center justify-center mx-auto mt-10 ">
+        <button className="btn btn-primary" onClick={handlePrev}>
+          Prev
+        </button>
+        {pages.map((page) => (
+          <button
+            onClick={() => setCuretPage(page)}
+            className={`${
+              curetPage === page ? "bg-primary text-white" : ""
+            } m-2 py-1 px-2 border border-primary rounded-md`}
+            key={page}
+          >
+            {page + 1}
+          </button>
+        ))}
+        <button className="btn btn-primary" onClick={handleNext}>
+          Next
+        </button>
+        <select
+          value={itemsParPage}
+          onChange={handleItemPerPage}
+          className="border ml-3 border-primary p-2 rounded-md"
+        >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+      </div>
     </div>
   );
 };
