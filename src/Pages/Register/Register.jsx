@@ -54,8 +54,8 @@ const Register = () => {
         //* Update profile
         updateUser({ displayName: name, photoURL: imgUrl })
           .then(() => {
-            toast.success("Register Successfully");
             navigate(location.state || "/");
+            toast.success("Register Successfully");
           })
           .catch((error) => {
             toast.error(error.message);

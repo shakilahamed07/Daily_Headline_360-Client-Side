@@ -49,59 +49,70 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  //* on State user
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, async (current) => {
-
-      if(current){
-        axios.post("https://daily-headline-360-server-side.vercel.app/jwt", { email: current.email }).then((res) => {
-          localStorage.setItem("access-token", res.data.token);
-        });
-      }
-
-      setUser(current);
-      setLoader(false);
-      
-      if (current?.email) {
-        const res = await axios.get(
-          `https://daily-headline-360-server-side.vercel.app/user/premiumToken/${current?.email}`
-        );
-        const dbUser = res?.data;
-
-        // ✅ Check premium expiry
-        const now = Date.now();
-        const expireTime = new Date(dbUser?.premiumToken).getTime();
-
-        if (dbUser.premiumToken && now > expireTime) {
-          const token = localStorage.getItem("access-token");
-          await axios.patch(
-            `https://daily-headline-360-server-side.vercel.app/users/premium-null/${dbUser._id}`,
-            {}, // empty request body
-            {
-              headers: {
-                authorization: `Bearer ${token}`
-              }
-            }
-          );          
-
-          QueryClient.invalidateQueries(["users3"]);
-
-          Swal.fire({
-            title: "⏳ Subscription Expired!",
-            text: "Your premium access has ended. Please renew to continue enjoying exclusive content.",
-            icon: "warning",
-            confirmButtonText: "Okay",
-            confirmButtonColor: "#d33",
-            timer: 5000,
-          });
+    const unSubscribe = onAuthStateChanged(auth, (current) => {
+      const handleAuth = async () => {
+        if (current) {
+          try {
+            const jwtRes = await axios.post(
+              "https://daily-headline-360-server-side.vercel.app/jwt",
+              { email: current.email }
+            );
+            localStorage.setItem("access-token", jwtRes.data.token);
+          } catch (err) {
+            console.error("JWT fetch failed:", err);
+          }
         }
-      }
+  
+        setUser(current);
+        setLoader(false);
+  
+        if (current?.email) {
+          try {
+            const res = await axios.get(
+              `https://daily-headline-360-server-side.vercel.app/user/premiumToken/${current.email}`
+            );
+            const dbUser = res.data;
+  
+            // Check premium expiry
+            const now = Date.now();
+            const expireTime = new Date(dbUser?.premiumToken).getTime();
+  
+            if (dbUser.premiumToken && now > expireTime) {
+              const token = localStorage.getItem("access-token");
+              await axios.patch(
+                `https://daily-headline-360-server-side.vercel.app/users/premium-null/${dbUser._id}`,
+                {},
+                {
+                  headers: {
+                    authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+  
+              QueryClient.invalidateQueries(["users3"]);
+  
+              Swal.fire({
+                title: "⏳ Subscription Expired!",
+                text: "Your premium access has ended. Please renew to continue enjoying exclusive content.",
+                icon: "warning",
+                confirmButtonText: "Okay",
+                confirmButtonColor: "#d33",
+                timer: 5000,
+              });
+            }
+          } catch (error) {
+            console.error("Premium check failed:", error);
+          }
+        }
+      };
+  
+      handleAuth();
     });
-
-    
-
+  
     return () => unSubscribe();
   }, []);
+  
 
   const authData = {
     user,

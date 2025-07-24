@@ -86,8 +86,10 @@ const All_Article_Page = () => {
   ];
 
   const detailsPage = async (id) => {
-    await axiosSecure.patch(`/articles/view-Increase/${id}`);
     navigate(`/article/${id}`);
+    if(user?.email){
+      await axiosSecure.patch(`/articles/view-Increase/${id}`);
+    }
   };
 
   //^ pagination

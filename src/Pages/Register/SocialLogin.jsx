@@ -18,8 +18,8 @@ const SocialLogin = () => {
         toast.success("Login successful");
         navigate(location.state || "/");
         
-        //update database
-        await axios.post("/users", {
+        // update database
+        await axios.post("https://daily-headline-360-server-side.vercel.app/users", {
             email: result.user.email,
             img: result.user.photoURL,
             name: result.user.displayName

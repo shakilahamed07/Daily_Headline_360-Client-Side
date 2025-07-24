@@ -5,11 +5,11 @@
 ---
 
 ## 🔗 Live Link
-[Live Website](#)
+[Live Website](https://daily-headline-360.netlify.app/)
 
 ## 🔐 Admin Credentials
-- **Email:** `your-admin-email@example.com`
-- **Password:** `your-admin-password`
+- **Email:** `shakilkhan@gmail.com`
+- **Password:** `Shakil$10`
 
 ---
 

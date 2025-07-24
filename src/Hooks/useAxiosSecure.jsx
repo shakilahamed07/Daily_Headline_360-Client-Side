@@ -30,10 +30,10 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.response.use(res=>{
         return res;
     },error=>{
-        // console.log(error.status)
+        // console.log(error)
         const status = error.status;
         if(status === 403){
-            navigate('/')
+            console.log(error)
         }
         else if(status === 401){
             logOutUser()
