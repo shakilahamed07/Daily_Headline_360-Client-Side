@@ -7,7 +7,7 @@ const MostPupularArticle = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("access-token");
-    axios.get("http://localhost:5000/articles/top-views", {
+    axios.get("https://daily-headline-360-server-side.vercel.app/articles/top-views", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

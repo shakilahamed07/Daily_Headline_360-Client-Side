@@ -6,7 +6,7 @@ import useAuth from './useAuth';
 import Loader from '../Components/Share/Loader';
 
 const axiosSecure = axios.create({
-    baseURL:'http://localhost:5000',
+    baseURL:'https://daily-headline-360-server-side.vercel.app',
 
 })
 

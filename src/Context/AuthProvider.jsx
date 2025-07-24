@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, async (current) => {
 
       if(current){
-        axios.post("http://localhost:5000/jwt", { email: current.email }).then((res) => {
+        axios.post("https://daily-headline-360-server-side.vercel.app/jwt", { email: current.email }).then((res) => {
           localStorage.setItem("access-token", res.data.token);
         });
       }
@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
       
       if (current?.email) {
         const res = await axios.get(
-          `http://localhost:5000/user/premiumToken/${current?.email}`
+          `https://daily-headline-360-server-side.vercel.app/user/premiumToken/${current?.email}`
         );
         const dbUser = res?.data;
 
@@ -75,7 +75,7 @@ const AuthProvider = ({ children }) => {
         if (dbUser.premiumToken && now > expireTime) {
           const token = localStorage.getItem("access-token");
           await axios.patch(
-            `http://localhost:5000/users/premium-null/${dbUser._id}`,
+            `https://daily-headline-360-server-side.vercel.app/users/premium-null/${dbUser._id}`,
             {}, // empty request body
             {
               headers: {

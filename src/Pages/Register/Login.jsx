@@ -27,7 +27,7 @@ const Login = () => {
         toast.success('Login successful');
 
         //update database
-        await axios.post("http://localhost:5000/users", {
+        await axios.post("https://daily-headline-360-server-side.vercel.app/users", {
           email: email,
           
         });

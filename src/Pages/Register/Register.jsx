@@ -45,7 +45,7 @@ const Register = () => {
       .then(async () => {
 
         //update database
-        await axios.post("http://localhost:5000/users", {
+        await axios.post("https://daily-headline-360-server-side.vercel.app/users", {
           email: email,
           img: imgUrl,
           name

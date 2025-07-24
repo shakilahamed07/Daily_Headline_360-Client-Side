@@ -190,7 +190,7 @@ const All_Article_Page = () => {
 
       {/* //^ pagination */}
       <div className="flex items-center justify-center mx-auto mt-10 ">
-        <button className="btn btn-primary" onClick={handlePrev}>
+        <button className="btn btn-primary hidden sm:block" onClick={handlePrev}>
           Prev
         </button>
         {pages.map((page) => (
@@ -204,13 +204,13 @@ const All_Article_Page = () => {
             {page + 1}
           </button>
         ))}
-        <button className="btn btn-primary" onClick={handleNext}>
+        <button className="btn btn-primary hidden sm:block" onClick={handleNext}>
           Next
         </button>
         <select
           value={itemsParPage}
           onChange={handleItemPerPage}
-          className="border ml-3 border-primary p-2 rounded-md"
+          className="border ml-3 border-primary p-1 sm:p-2 rounded-md"
         >
           <option value="5">5</option>
           <option value="10">10</option>
