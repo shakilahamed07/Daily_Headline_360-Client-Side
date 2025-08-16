@@ -6,6 +6,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useNavigate } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import Loader from "../../Components/Share/Loader";
+import { FaSearch } from "react-icons/fa";
 
 const All_Article_Page = () => {
   const axiosSecure = useAxiosSecure();
@@ -87,7 +88,7 @@ const All_Article_Page = () => {
 
   const detailsPage = async (id) => {
     navigate(`/article/${id}`);
-    if(user?.email){
+    if (user?.email) {
       await axiosSecure.patch(`/articles/view-Increase/${id}`);
     }
   };
@@ -111,23 +112,28 @@ const All_Article_Page = () => {
     setItemsParPage(val);
     setCuretPage(0);
   };
-
-  {isLoading && <Loader />}
+  
+  {
+    isLoading && <Loader />;
+  }
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <div className="lg:sticky top-17 z-40 bg-base-100 px-2 pt-3 ">
-        <h1 className="text-2xl font-bold mb-4">All Articles</h1>
+      <div className="lg:sticky top-17 z-40 bg-base-100 px-2 pt-2 ">
+        <h1 className="text-xl font-bold mb-2">All Articles</h1>
 
         {/* Filters */}
         <div className=" grid md:grid-cols-3 gap-4 mb-6">
-          <input
-            type="text"
-            placeholder="Search by title"
-            className="input input-bordered w-full md:mb-2 "
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
+          <div className="relative w-full md:mb-2">
+            <input
+              type="text"
+              placeholder="Search by title"
+              className="input input-bordered w-full pl-10" // add padding-left for the icon
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" />
+          </div>
 
           <Select
             options={publishers}
@@ -152,11 +158,11 @@ const All_Article_Page = () => {
       )}
 
       {/* Articles Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-1">
         {articles.map((article) => (
           <div
             key={article._id}
-            className={`card p-4 border rounded-2xl shadow-sm flex flex-col justify-between transition hover:shadow-md ${
+            className={`card p-3 border rounded-2xl shadow-sm flex flex-col justify-between transition hover:shadow-md ${
               article.isPremium ? "border-yellow-500" : "border-gray-200"
             }`}
           >
@@ -165,12 +171,9 @@ const All_Article_Page = () => {
               alt={article.title}
               className="h-40 w-full object-cover rounded"
             />
-            <h2 className="text-xl font-semibold mt-2">{article.title}</h2>
-            <p className="text-sm text-gray-500 mb-1">
-              Publisher: {article.publisher}
-            </p>
-            <p className="text-sm text-gray-700 mb-3">
-              {article.description.slice(0, 100)}...
+            <h2 className="text-md font-semibold mt-2 line-clamp-2 mb-3">{article.title}</h2>
+            <p className="text-sm text-gray-700 mb-3 line-clamp-3">
+              {article.description}
             </p>
 
             <button
@@ -192,7 +195,10 @@ const All_Article_Page = () => {
 
       {/* //^ pagination */}
       <div className="flex items-center justify-center mx-auto mt-10 ">
-        <button className="btn btn-primary hidden sm:block" onClick={handlePrev}>
+        <button
+          className="btn btn-primary hidden sm:block"
+          onClick={handlePrev}
+        >
           Prev
         </button>
         {pages.map((page) => (
@@ -206,7 +212,10 @@ const All_Article_Page = () => {
             {page + 1}
           </button>
         ))}
-        <button className="btn btn-primary hidden sm:block" onClick={handleNext}>
+        <button
+          className="btn btn-primary hidden sm:block"
+          onClick={handleNext}
+        >
           Next
         </button>
         <select

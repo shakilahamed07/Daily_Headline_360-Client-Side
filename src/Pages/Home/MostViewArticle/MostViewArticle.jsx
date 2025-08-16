@@ -20,24 +20,24 @@ const MostViewArticle = () => {
   if (isLoading) return <Loader/>;
 
   return (
-    <div className="mx-2 mt-5">
+    <div className="mx-2 mt-5 shadow-sm rounded-xl mb-10">
       <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} interval={4000}
         stopOnHover={false}
         >
         
         {trendingArticles.map((article) => (
-          <div key={article._id} className="rounded-xl overflow-hidden shadow-lg">
+          <div key={article._id} className="rounded-xl overflow-hidden">
             <img
               src={article.image}
               alt={article.title}
-              className="md:h-96 w-full object-cover"
+              className="md:h-96 h-52 w-full object-center"
             />
             <div className="p-4 bg-white text-left mb-5">
               <h3 className="text-3xl font-semibold mb-1">{article.title}</h3>
               <p className="text-sm text-gray-500 mb-5">
                 Publisher: {article.publisher}
               </p>
-              <p className="text-sm text-gray-600 line-clamp-3">
+              <p className="text-sm text-gray-600 line-clamp-3 mb-5">
                 {article.description}
               </p>
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import Logo from "../../assets/logo.png";
 
 const Footer = () => {
@@ -14,7 +14,7 @@ const Footer = () => {
             <a
               className="font-medium hover:underline"
               target="blank"
-              href="https://www.facebook.com/share/1HXNLBsofY/"
+              href="https://shakil-ahmed-dev.netlify.app/"
             >
               Shakil Ahamed
             </a>
@@ -22,28 +22,28 @@ const Footer = () => {
         </div>
         <nav>
           <h6 className="footer-title">Contact Us</h6>
-          <a className="">Email: shakil200607@gmail.com</a>
-          <a className="">Phone: +8801772144965</a>
-          <a className="">WhatsApp: +880134614946</a>
+          <a href="mailto:shakil200607@gmail.com" >Email: <span className="hover:underline">shakil200607@gmail.com</span></a>
+          <a href="tel:+8801323540375" >Phone: <span className="hover:underline">+880 1323-540375</span></a>
+          <a href="https://wa.me/8801772551376?text=Hello%2C%20I%20want%20to%20connect%20with%20you." target="blank">WhatsApp: <span className="hover:underline">+880 1772-551376</span></a>
         </nav>
         <nav>
-          <h6 className="footer-title">Legal</h6>
+          {/* <h6 className="footer-title">Legal</h6>
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <a className="link link-hover">Cookie policy</a> */}
         </nav>
         <nav>
           <h6 className="footer-title">Social</h6>
           <div className="flex gap-5">
-            <p>
+            <a href="https://facebook.com/adnanShakilAyan" target="blank">
               <FaFacebook size={25} />
-            </p>
-            <p>
+            </a>
+            <a href="https://x.com/shakilahamed07" target="blank">
               <FaTwitter size={25} />
-            </p>
-            <p>
-              <FaInstagram size={25} />
-            </p>
+            </a>
+            <a href="https://www.linkedin.com/in/shakil-ahmed-745566379" target="blank">
+              <FaLinkedinIn size={25} />
+            </a>
           </div>
         </nav>
       </footer>

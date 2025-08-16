@@ -3,12 +3,12 @@ import React from "react";
 const FaqSection = () => {
   return (
     <div className="">
-        <h1 className="text-center sm:-mb-15  mt-10 text-3xl font-bold">Frequently Asked Question</h1>
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 bg-base-100 p-8 md:p-16 space-y-8 md:space-y-0 mb-10 rounded-2xl mx-2">
+      <h1 className="text-center  mt-10 text-3xl font-bold">Frequently Asked Question</h1>
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 bg-base-100 p-8 md:p-10 space-y-8 md:space-y-0 rounded-2xl mx-2">
         {/* Left - Image */}
         <div className="relative w-full lg:w-1/2">
           <img
-            src="https://img.freepik.com/free-vector/curiosity-people-concept-illustration_114360-11034.jpg?ga=GA1.1.751526860.1746424154&semt=ais_hybrid&w=740"
+            src="https://i.ibb.co.com/b5rgvjbM/curiosity-people-concept-illustration-114360-11034-removebg-preview.png"
             alt="FAQ Illustration"
             className="rounded-xl mx-auto"
           />

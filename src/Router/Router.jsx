@@ -50,7 +50,7 @@ import DashboardHome from '../Pages/Dashboard/DashboardHome/DashboardHome';
         },
         {
           path: '/subscription',
-          element: <PriveteRoute><Subscription/></PriveteRoute>
+          element: <Subscription/>
         },
         {
           path: '/payment',
@@ -101,6 +101,10 @@ import DashboardHome from '../Pages/Dashboard/DashboardHome/DashboardHome';
         {
           path:'make-admin',
           element: <AdminRoutes><MakeAdmin/></AdminRoutes>
+        },
+        {
+          path:'/dashboard/profile',
+          element: <AdminRoutes><MyProfile></MyProfile></AdminRoutes>
         },
       ]
     }

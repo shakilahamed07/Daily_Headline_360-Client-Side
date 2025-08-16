@@ -31,7 +31,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-xl shadow-lg py-10 mb-20 mx-3">
+    <div className="bg-gray-100 rounded-xl shadow-lg py-10 mt-10 mb-20 mx-3">
       <h2 className="text-3xl font-bold text-gray-800 text-center">Get in Touch</h2>
 
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto overflow-hidden">

@@ -49,6 +49,16 @@ const Navbar = () => {
         </NavLink>
       </li>
 
+      <li>
+            <NavLink
+              onClick={() => window.scrollTo({ top: 120, behavior: "smooth" })}
+              to="/subscription"
+              className={`font-medium md:text-white flex items-center gap-2`}
+            >
+              <FaBell /> Subscription
+            </NavLink>
+          </li>
+
       {user && (
         <>
           <li>
@@ -57,16 +67,6 @@ const Navbar = () => {
               className={`font-medium md:text-white flex items-center gap-2`}
             >
               <FaPlusCircle /> Add Articles
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              onClick={() => window.scrollTo({ top: 120, behavior: "smooth" })}
-              to="/subscription"
-              className={`font-medium md:text-white flex items-center gap-2`}
-            >
-              <FaBell /> Subscription
             </NavLink>
           </li>
 
@@ -106,7 +106,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-base-300 border-b-2 ">
+    <div className="bg-base-300 border-b-2 shadow-md">
       <div className="navbar justify-between items-center max-w-[1250px] mx-auto">
         <div className="flex ">
           <div className="dropdown">
@@ -134,7 +134,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 w-60 h-screen p-2 -mt-13 shadow flex justify-start -ml-4 z-95"
+              className="menu menu-sm dropdown-content bg-base-100 w-60 h-screen p-2 -mt-13 shadow flex justify-start -ml-4 z-95 space-y-3"
             >
               <a>
                 <img className="w-35 mb-3 sm:hidden" src={logo} alt="" />

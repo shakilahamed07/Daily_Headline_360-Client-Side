@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { IoReturnDownBack } from "react-icons/io5";
 import useUserRole from "../Hooks/useUserRole";
 import Logo from "../Components/Share/Logo";
@@ -10,7 +10,8 @@ import useAuth from "../Hooks/useAuth";
 const DashBoard = () => {
   const { user } = useAuth();
   const { role, roleLoading } = useUserRole();
-  // console.log(role)
+  const location = useLocation()
+  console.log(location.pathname)
 
   const nav = (
     <>
@@ -29,8 +30,21 @@ const DashBoard = () => {
       </li>
 
       <li className="bg-gray-300 mb-5 font-bold flex gap-2  rounded">
-        <NavLink
+        <Link
           to="/dashboard"
+          className={`${location.pathname === '/dashboard' && 'bg-primary text-white' }`}
+        >
+          <MdDashboard />
+          Dashboard
+        </Link>
+      </li>
+
+      {/* admin access page */}
+      {!roleLoading && role === "admin" && <AdminAccessPages />}
+
+      <li className="bg-gray-300 mb-5 font-bold flex gap-2  rounded">
+        <NavLink
+          to="/dashboard/profile"
           className={({ isActive }) =>
             isActive
               ? "flex items-center  gap-2 bg-primary text-white"
@@ -38,12 +52,9 @@ const DashBoard = () => {
           }
         >
           <MdDashboard />
-          Dashboard Home
+          Profile
         </NavLink>
       </li>
-
-      {/* admin access page */}
-      {!roleLoading && role === "admin" && <AdminAccessPages />}
     </>
   );
 
@@ -100,7 +111,7 @@ const DashBoard = () => {
               className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-gray-800 dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50 border bg-white"
             />
           </div>
-          <button
+          <Link to='/dashboard/profile'
             type="button"
             className="w-10 h-10 font-semibold rounded-full border"
           >
@@ -109,9 +120,10 @@ const DashBoard = () => {
               src={user.photoURL}
               alt=""
             />
-          </button>
+          </Link>
         </div>
       </div>
+
       <div className="mx-auto drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
