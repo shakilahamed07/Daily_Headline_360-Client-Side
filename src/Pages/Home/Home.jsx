@@ -8,6 +8,7 @@ import useUserRole from "../../Hooks/useUserRole";
 import FaqSection from "./Faq/FaqSection";
 import ContactUs from "./ContactUs/ContactUs";
 import LatestNews from "./LatestNews/LatestNews";
+import ClientSlider from "./ClientSlider/ClientSlider";
 
 const Home = () => {
   const { userInfo } = useUserRole();
@@ -22,6 +23,7 @@ const Home = () => {
       {!userInfo.premiumToken && <SubscriptionPromptModal />}
       <FaqSection/>
       <ContactUs/>
+      <ClientSlider/>
     </div>
   );
 };
