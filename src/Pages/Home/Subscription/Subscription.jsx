@@ -4,7 +4,7 @@ import SubscriptionImg from "../../../assets/Subscription.png";
 import { FaArrowDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const subscriptionOptions = [
-  { label: "1 Minute", value: 1, price: 5 },
+  { label: "1 Minute -(test Purpose)", value: 1, price: 5 },
   { label: "5 Days", value: 5 * 24 * 60, price: 10 },
   { label: "10 Days", value: 10 * 24 * 60, price: 20 },
 ];

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
+import Loader from "../../../Components/Share/Loader";
 
 const MakeAdmin = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,7 +25,7 @@ const MakeAdmin = () => {
    });
 
   // Fetch all users
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [], isLoading, refetch } = useQuery({
     queryKey: ["all-users", curetPage, itemsParPage],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users?page=${curetPage}&size=${itemsParPage}`);
@@ -68,6 +69,10 @@ const MakeAdmin = () => {
       setItemsParPage(val);
       setCuretPage(0);
     };
+
+    if(isLoading){
+      return <Loader/>
+    }
 
   return (
     <div className="p-6">
