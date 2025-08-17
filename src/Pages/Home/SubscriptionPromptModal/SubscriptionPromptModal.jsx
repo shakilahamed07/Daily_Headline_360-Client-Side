@@ -32,7 +32,12 @@ const SubscriptionPromptModal = () => {
     <>
       {showModal && (
         <div className="fixed inset-0 z-50 bg-black/50 bg-opacity-40 flex items-center justify-center">
-          <div className="relative bg-white p-6 rounded-xl shadow-lg max-w-sm w-full">
+          <div
+            data-aos="zoom-in"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            className="relative bg-white p-6 rounded-xl shadow-lg max-w-sm w-full"
+          >
             {/* ❌ Close Button */}
             <button
               onClick={handleClose}
@@ -40,14 +45,16 @@ const SubscriptionPromptModal = () => {
             >
               ✖
             </button>
-            <div className="flex justify-center mb-3 text-black"><FaBell size={50}/></div>
+            <div className="flex justify-center mb-3 text-black">
+              <FaBell size={50} />
+            </div>
             <h2 className="text-xl font-semibold mb-2 text-black text-center">
               Enjoy Unlimited Articles
             </h2>
             <p className="text-gray-600 mb-4 text-center">
               Subscribe now to access premium content and exclusive features!
             </p>
-            
+
             <div className="flex justify-center">
               <button
                 onClick={handleSubscribe}

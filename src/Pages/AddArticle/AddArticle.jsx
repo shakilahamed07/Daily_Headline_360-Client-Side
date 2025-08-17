@@ -134,7 +134,7 @@ const AddArticle = () => {
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <div className="text-base-200">
+              <div className="text-black">
                 <Select
                 {...field}
                 options={publishers.map((p) => ({
@@ -178,7 +178,7 @@ const AddArticle = () => {
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-             <div className="text-base-200">
+             <div className="text-black">
                <Select
                 {...field}
                 options={tagOptions}

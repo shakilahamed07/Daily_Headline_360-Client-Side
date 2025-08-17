@@ -32,7 +32,7 @@ const MostViewArticle = () => {
   if (isLoading) return <Loader/>;
 
   return (
-    <div className="mx-2 mt-5 shadow-sm rounded-2xl mb-10">
+    <div data-aos="zoom-in" className="mx-2 mt-5 shadow-sm rounded-2xl mb-10">
       <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} interval={4000}
         stopOnHover={false}
         >

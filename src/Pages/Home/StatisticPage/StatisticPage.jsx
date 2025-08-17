@@ -29,7 +29,9 @@ const StatisticPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {/* Total Users */}
-        <div className="rounded-2xl text-white shadow-md p-8 text-center bg-blue-500">
+        <div data-aos="zoom-in"
+              data-aos-delay="50"
+              data-aos-duration="600" className="rounded-2xl text-white shadow-md p-8 text-center bg-blue-500">
           <div className="flex justify-center mb-4">
             <FaUsers className="text-5xl" />
           </div>
@@ -40,7 +42,9 @@ const StatisticPage = () => {
         </div>
 
         {/* Normal Users */}
-        <div className="rounded-2xl text-white shadow-md p-8 text-center bg-green-500">
+        <div data-aos="zoom-in"
+              data-aos-delay="50"
+              data-aos-duration="900" className="rounded-2xl text-white shadow-md p-8 text-center bg-green-500">
           <div className="flex justify-center mb-4">
             <FaUser className="text-5xl" />
           </div>
@@ -51,7 +55,9 @@ const StatisticPage = () => {
         </div>
 
         {/* Premium Users */}
-        <div className="rounded-2xl text-white shadow-md p-8 text-center bg-purple-500">
+        <div data-aos="zoom-in"
+              data-aos-delay="50"
+              data-aos-duration="1200" className="rounded-2xl text-white shadow-md p-8 text-center bg-purple-500">
           <div className="flex justify-center mb-4">
             <FaCrown className="text-5xl" />
           </div>

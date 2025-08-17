@@ -38,7 +38,7 @@ export default function Subscription() {
         <h1 className="text-4xl md:text-5xl font-extrabold  mb-4">
           Unlock Premium Access to All News
         </h1>
-        <p className="text-lg text-gray-700">
+        <p className="text-lg text-gray-500">
         Subscription to access premium news.
         </p>
       </div>

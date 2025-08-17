@@ -6,24 +6,25 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 
 const LatestNews = () => {
-
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
 
-    const handelViwDetails  = async (id) =>{
-        navigate(`/article/${id}`)
-        if (user?.email) {
-            await axiosSecure.patch(`/articles/view-Increase/${id}`);
-          }
+  const handelViwDetails = async (id) => {
+    navigate(`/article/${id}`);
+    if (user?.email) {
+      await axiosSecure.patch(`/articles/view-Increase/${id}`);
     }
+  };
 
   // latest news
-  const { data: latestNews = [], isLoading} = useQuery({
+  const { data: latestNews = [], isLoading } = useQuery({
     queryKey: ["latestNews"],
     queryFn: async () => {
-        const res = await axios.get("https://daily-headline-360-server-side.vercel.app/latest/articles");
-        return res.data
+      const res = await axios.get(
+        "https://daily-headline-360-server-side.vercel.app/latest/articles"
+      );
+      return res.data;
     },
   });
 
@@ -32,13 +33,14 @@ const LatestNews = () => {
   return (
     <section className="mt-20 mb-10">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 ">
-          📰 Latest News
-        </h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 ">📰 Latest News</h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3  gap-6">
           {latestNews.map((news) => (
             <div
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
               key={news._id}
               className="bg-white rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden"
             >
@@ -57,7 +59,10 @@ const LatestNews = () => {
                 <p className="text-gray-600 text-sm mt-2 mb-4 line-clamp-3">
                   {news.description}
                 </p>
-                <button onClick={()=>handelViwDetails(news._id)} className="px-4 py-2 border rounded-xl text-gray-700 hover:bg-gray-100 transition ">
+                <button
+                  onClick={() => handelViwDetails(news._id)}
+                  className="px-4 py-2 border rounded-xl text-gray-700 hover:bg-gray-100 transition "
+                >
                   Read More
                 </button>
               </div>

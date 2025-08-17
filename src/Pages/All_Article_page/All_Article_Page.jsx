@@ -135,7 +135,7 @@ const All_Article_Page = () => {
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" />
           </div>
 
-          <div className="text-base-200">
+          <div className="text-black">
           <Select
             options={publishers}
             onChange={(val) => setSelectedPublisher(val?.label || null)}
@@ -145,7 +145,7 @@ const All_Article_Page = () => {
           />
           </div>
 
-          <div className="text-base-200">
+          <div className="text-black">
           <Select
             options={tagOptions}
             isMulti
@@ -165,7 +165,9 @@ const All_Article_Page = () => {
       {/* Articles Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-1">
         {articles.map((article) => (
-          <div
+          <div data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="800"
             key={article._id}
             className={`card p-3 border rounded-2xl shadow-sm flex flex-col justify-between transition hover:shadow-md ${
               article.isPremium ? "border-yellow-500" : "border-gray-200"

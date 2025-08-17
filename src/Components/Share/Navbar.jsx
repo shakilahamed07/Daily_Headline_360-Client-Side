@@ -120,7 +120,9 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-base-300  shadow-md">
+    <div data-aos="fade-up"
+    data-aos-delay="50"
+    data-aos-duration="600" className="bg-base-300  shadow-md">
       <div className="navbar justify-between items-center max-w-[1250px] mx-auto">
         <div className="flex ">
           <div className="dropdown">
