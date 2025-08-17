@@ -135,20 +135,24 @@ const All_Article_Page = () => {
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" />
           </div>
 
+          <div className="text-base-200">
           <Select
             options={publishers}
             onChange={(val) => setSelectedPublisher(val?.label || null)}
-            placeholder="Filter by publisher"
+            placeholder="Filter by publisher "
             className=""
             isClearable
           />
+          </div>
 
+          <div className="text-base-200">
           <Select
             options={tagOptions}
             isMulti
             onChange={(val) => setSelectedTags(val.map((v) => v.value))}
             placeholder="Filter by tags"
           />
+          </div>
         </div>
       </div>
 

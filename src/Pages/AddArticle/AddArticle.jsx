@@ -127,14 +127,15 @@ const AddArticle = () => {
         </div>
 
         {/* Publisher */}
-        <div>
+        <div >
           <label className="font-medium mb-1 block">Publisher</label>
           <Controller
             name="publisher"
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <Select
+              <div className="text-base-200">
+                <Select
                 {...field}
                 options={publishers.map((p) => ({
                   value: p.logo,
@@ -143,6 +144,7 @@ const AddArticle = () => {
                 isLoading={isLoading}
                 placeholder="Select publisher"
               />
+              </div>
             )}
           />
           {errors.publisher && (
@@ -176,12 +178,14 @@ const AddArticle = () => {
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <Select
+             <div className="text-base-200">
+               <Select
                 {...field}
                 options={tagOptions}
                 isMulti
                 placeholder="Select tags"
               />
+             </div>
             )}
           />
           {errors.tags && (
