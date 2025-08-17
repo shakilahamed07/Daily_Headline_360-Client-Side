@@ -7,6 +7,7 @@ import SubscriptionPromptModal from "../Home/SubscriptionPromptModal/Subscriptio
 import useUserRole from "../../Hooks/useUserRole";
 import FaqSection from "./Faq/FaqSection";
 import ContactUs from "./ContactUs/ContactUs";
+import LatestNews from "./LatestNews/LatestNews";
 
 const Home = () => {
   const { userInfo } = useUserRole();
@@ -14,6 +15,7 @@ const Home = () => {
   return (
     <div className="max-w-[1250px] mx-auto">
       <MostViewArticle />
+      <LatestNews/>
       <AllPublisher />
       <StatisticPage />
       <SubscriptionPricing />

@@ -5,10 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loader from "../../../Components/Share/Loader";
 import { useNavigate } from "react-router";
+import useAuth from "../../../Hooks/useAuth";
 
 const MostViewArticle = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate()
+  const { user } = useAuth();
+  
 
   const { data: trendingArticles = [], isLoading} = useQuery({
     queryKey: ["trendingArticles"],
@@ -18,8 +21,11 @@ const MostViewArticle = () => {
     },
   });
 
-  const handelViwDetails  = (id) =>{
+  const handelViwDetails  = async (id) =>{
       navigate(`/article/${id}`)
+      if (user?.email) {
+        await axiosSecure.patch(`/articles/view-Increase/${id}`);
+      }
   }
 
 
