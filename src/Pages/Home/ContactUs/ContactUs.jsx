@@ -31,8 +31,8 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-xl shadow-lg py-10 mt-10 mb-20 mx-3">
-      <h2 className="text-3xl font-bold text-gray-800 text-center">Get in Touch</h2>
+    <div className="bg-base-200  rounded-xl shadow-lg py-10 mt-10 mb-20 mx-3">
+      <h2 className="text-3xl font-bold  text-center">Get in Touch</h2>
 
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto overflow-hidden">
         {/* Left side - Image & Text */}
@@ -56,7 +56,7 @@ const ContactUs = () => {
                 <input
                   type="text"
                   placeholder="Enter your name*"
-                  className="w-full p-3 bg-white rounded-2xl focus:outline-gray-700"
+                  className="w-full p-3 bg-base-200 border  rounded-2xl focus:outline-gray-700"
                   {...register("name", { required: "Name is required" })}
                 />
                 {errors.name && (
@@ -67,8 +67,8 @@ const ContactUs = () => {
               <div className="w-1/2">
                 <input
                   type="text"
-                  placeholder="Enter your phone number*"
-                  className="w-full p-3 bg-white rounded-2xl focus:outline-gray-700"
+                  placeholder="Enter your number*"
+                  className="w-full p-3 bg-base-200 border rounded-2xl focus:outline-gray-700"
                   {...register("phone", { required: "Phone number is required" })}
                 />
                 {errors.phone && (
@@ -81,7 +81,7 @@ const ContactUs = () => {
               <input
                 type="email"
                 placeholder="Enter your email*"
-                className="w-full p-3 bg-white rounded-2xl focus:outline-gray-700"
+                className="w-full p-3 bg-base-200 border rounded-2xl focus:outline-gray-700"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -99,7 +99,7 @@ const ContactUs = () => {
               <textarea
                 rows="4"
                 placeholder="Your message*"
-                className="w-full p-3 bg-white rounded-2xl focus:outline-gray-700"
+                className="w-full p-3 bg-base-200 border rounded-2xl focus:outline-gray-700"
                 {...register("message", { required: "Message is required" })}
               ></textarea>
               {errors.message && (

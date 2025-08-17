@@ -34,7 +34,7 @@ const AddPublisher = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto lg:mt-50 my-30 shadow-lg rounded-2xl bg-white p-10">
+    <div className="max-w-md mx-auto lg:mt-50 my-30 shadow-lg rounded-2xl bg-base-200 p-10">
       <h2 className="text-2xl font-bold mb-4 text-center">Add Publisher</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

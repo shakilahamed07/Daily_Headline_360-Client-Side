@@ -33,7 +33,7 @@ const AllPublisher = () => {
               />
             </div>
             <div className="px-4 pb-4 text-center">
-              <h3 className="text-lg font-semibold">{publisher.name}</h3>
+              <h3 className="text-lg font-semibold text-black">{publisher.name}</h3>
               <p className="text-gray-500 text-sm hidden lg:block">Reputable News Source</p>
             </div>
           </div>

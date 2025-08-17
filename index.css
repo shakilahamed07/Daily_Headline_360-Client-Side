@@ -7,7 +7,7 @@
     --color-primary: #CB0404;
     --color-secondary: #a31208;
     --color-base-300: #0f0e0e;
-    --color-base-200: ;
+    --color-base-200: #f6f6f6;
   }
 @plugin "daisyui/theme" {
     name: "dark";
@@ -15,8 +15,9 @@
     --color-primary: #CB0404;
     --color-secondary: #a31208;
     --color-base-300: #0f0e0e;
-    --color-base-400: ;
+    --color-base-200: #111111;
   }
+
 .active{
     @apply border-b-4 border-primary text-primary
 }

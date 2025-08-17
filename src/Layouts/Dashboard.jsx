@@ -61,7 +61,7 @@ const DashBoard = () => {
   return (
     <div className="">
       {/* Navbar */}
-      <div className="navbar sticky top-0 z-30 flex justify-between bg-gray-50">
+      <div className="navbar sticky top-0 z-30 flex justify-between bg-base-200">
         <div className="flex items-center">
           <label
             htmlFor="my-drawer-2"
@@ -141,12 +141,14 @@ const DashBoard = () => {
             className="drawer-overlay"
           ></label>
 
-          <ul className="menu lg:pt-3 bg-gray-50 text-base-content min-h-full w-80 p-4">
+          <ul className="menu lg:pt-3 bg-base-200 text-base-content min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <div className="mb-8 lg:hidden">
               <Logo />
             </div>
+            <div className="text-black">
             {nav}
+            </div>
           </ul>
         </div>
       </div>

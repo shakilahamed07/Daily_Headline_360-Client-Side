@@ -40,8 +40,8 @@ const SubscriptionPromptModal = () => {
             >
               ✖
             </button>
-            <div className="flex justify-center mb-3"><FaBell size={50}/></div>
-            <h2 className="text-xl font-semibold mb-2 text-center">
+            <div className="flex justify-center mb-3 text-black"><FaBell size={50}/></div>
+            <h2 className="text-xl font-semibold mb-2 text-black text-center">
               Enjoy Unlimited Articles
             </h2>
             <p className="text-gray-600 mb-4 text-center">

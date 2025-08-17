@@ -44,18 +44,18 @@ export default function Subscription() {
       </div>
 
       {/* Subscription Card */}
-      <div className="max-w-xl mx-auto bg-white shadow-2xl rounded-2xl p-8 border border-gray-200 mb-20">
-        <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800">
+      <div className="max-w-xl mx-auto bg-base-200 shadow-2xl rounded-2xl p-8 border border-gray-200 mb-20">
+        <h2 className="text-2xl font-semibold text-center mb-6 ">
           Choose Your Subscription Plan
         </h2>
 
         {/* Dropdown */}
         <div className="mb-6">
-          <label className="block text-black font-medium mb-2">
+          <label className="block  font-medium mb-2">
             Subscription Period
           </label>
           <select
-            className="w-full border border-gray-800 rounded px-4 py-2"
+            className="w-full border border-gray-800 bg-base-200 rounded px-4 py-2"
             value={selected.value}
             onChange={(e) => {
               const option = subscriptionOptions.find(

@@ -139,6 +139,7 @@ const All_Article_Page = () => {
             options={publishers}
             onChange={(val) => setSelectedPublisher(val?.label || null)}
             placeholder="Filter by publisher"
+            className=""
             isClearable
           />
 
@@ -172,7 +173,7 @@ const All_Article_Page = () => {
               className="h-40 w-full object-cover rounded"
             />
             <h2 className="text-md font-semibold mt-2 line-clamp-2 mb-3">{article.title}</h2>
-            <p className="text-sm text-gray-700 mb-3 line-clamp-3">
+            <p className="text-sm  mb-3 line-clamp-3">
               {article.description}
             </p>
 

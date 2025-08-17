@@ -39,7 +39,7 @@ const MyProfile = () => {
 
   return (
     <div className="mx-3 ">
-      <div className="flex flex-col justify-center max-w-sm p-6 shadow-md rounded-xl sm:px-12 bg-gray-50  mx-auto my-10">
+      <div className="flex flex-col justify-center max-w-sm p-6 shadow-md rounded-xl sm:px-12 bg-base-200  mx-auto my-10">
         <div className="relative">
           <img
             src={user?.photoURL}
@@ -68,7 +68,7 @@ const MyProfile = () => {
 
       {declineId && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-          <div className="w-md mx-auto bg-white p-6 rounded-xl shadow-md mt-10 ml-5 mr-5">
+          <div className="w-md mx-auto bg-base-200 p-6 rounded-xl shadow-md mt-10 ml-5 mr-5">
             <div className="flex justify-end items-center">
               <span
                 onClick={() => setDeclineId(false)}

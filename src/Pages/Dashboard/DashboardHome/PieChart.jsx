@@ -24,7 +24,7 @@ const PieChart = () => {
   ];
 
   return (
-    <div className="bg-white shadow-md p-4 rounded-xl">
+    <div className="bg-white shadow-md p-4 rounded-xl mt-10">
       <Chart
         chartType="PieChart"
         data={chartData}
