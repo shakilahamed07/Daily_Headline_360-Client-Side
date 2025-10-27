@@ -9,7 +9,7 @@ const FaqSection = () => {
       <div className="flex flex-col lg:flex-row items-center justify-between gap-6 bg-base-100 p-8 md:p-10 space-y-8 md:space-y-0 rounded-2xl mx-2">
         {/* Left - Image */}
         <div
-          data-aos="fade-right"
+          data-aos="zoom-in"
           data-aos-delay="50"
           data-aos-duration="1000"
           className="relative w-full lg:w-1/2"
@@ -23,7 +23,7 @@ const FaqSection = () => {
 
         {/* Right - FAQ Content */}
         <div
-          data-aos="fade-left"
+          data-aos="zoom-in"
           data-aos-delay="50"
           data-aos-duration="1000"
           className="w-full lg:w-1/2 space-y-6"

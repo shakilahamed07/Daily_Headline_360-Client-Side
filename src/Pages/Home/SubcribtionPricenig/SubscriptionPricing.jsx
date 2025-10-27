@@ -27,9 +27,11 @@ export default function SubscriptionPricing() {
   return (
     <div className="py-10 ">
       <h2 className="text-3xl font-bold text-center mb-8">Choose Your Plan</h2>
-      <div data-aos="fade-left"
+      <div  
+          data-aos="zoom-in"
           data-aos-delay="50"
-          data-aos-duration="1000" className="max-w-6xl mx-auto px-4 grid gap-6 sm:grid-cols-1 md:grid-cols-3 justify-center">
+          data-aos-duration="1000"
+          className="max-w-6xl mx-auto px-4 grid gap-6 sm:grid-cols-1 md:grid-cols-3 justify-center">
         {plans.map((plan, index) => (           
           <div 
             key={index}

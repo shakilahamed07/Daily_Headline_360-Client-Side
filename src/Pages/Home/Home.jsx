@@ -14,7 +14,7 @@ const Home = () => {
   const { userInfo } = useUserRole();
 
   return (
-    <div className="max-w-[1250px] mx-auto">
+    <div className="max-w-[1250px] auto">
       <MostViewArticle />
       <LatestNews/>
       <AllPublisher />
